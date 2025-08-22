@@ -80,6 +80,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\RotateMovementState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstaclePath.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Player\PlayerCharacterInput.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\EntityStats.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\PatrolCharacterState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\BonusSeekerCharacterState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\IdlePlayerState.cs" />
@@ -95,10 +96,12 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\IdleMovementState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\OscillateRotation.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstacleCreateManager.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerStatsManager.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementBase.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\TextureOffsetAnimator.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\CharacterAnimator.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstacleGroup.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerStats.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\CharacterMovementStateBase.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\BlendShapeAnimator.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\StaticCharacter.cs" />
@@ -106,6 +109,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Manager\EntryPoint.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerStateManager.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\CharacterSoundController.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\EntityStatsManager.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\MoveMovementState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\Obstacles\LadderObstacleState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerState.cs" />
