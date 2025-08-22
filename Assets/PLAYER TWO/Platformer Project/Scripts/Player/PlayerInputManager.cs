@@ -11,11 +11,15 @@ public class PlayerInputManager : MonoBehaviour
     
     // 输入动作缓存
     protected InputAction m_movement;
+    
+    // 主摄像机引用，用于计算相对移动方向
+    protected Camera m_camera;
 
     protected virtual void Awake() => CacheActions();
 
     protected virtual void Start()
     {
+        m_camera = Camera.main;
         actions.Enable();
     }
     
@@ -57,4 +61,31 @@ public class PlayerInputManager : MonoBehaviour
     //protected float RemapToDeadzone(float value,float deadzone)=>(value - deadzone) / (1-deadzone);
     protected float RemapToDeadzone(float value,float deadzone)=>(value - (value > 0 ? -deadzone : deadzone)) / (1-deadzone);
 
+    
+    /// <summary>
+    /// 获取相机方向下的移动向量  
+    /// 将输入方向映射到相机朝向（Y轴旋转）下
+    /// </summary>
+    public virtual Vector3 GetMovementCameraDirection()
+    {
+        // 1. 获取移动方向（通常是玩家输入的水平/垂直方向，比如 WSAD 或摇杆）
+        var direction = GetMovementDirection();
+
+        // 2. 如果有输入（不是零向量）
+        if (direction.sqrMagnitude > 0)
+        {
+            // 3. 构建一个旋转：根据摄像机的 Y 轴角度（水平朝向）
+            // Quaternion.AngleAxis(angle, axis) 表示绕某个轴旋转一个角度
+            var rotation = Quaternion.AngleAxis(m_camera.transform.eulerAngles.y, Vector3.up);
+
+            // 4. 把原始输入方向旋转到摄像机的朝向下
+            direction = rotation * direction;
+
+            // 5. 归一化，保持方向向量的长度为 1（只保留方向）
+            direction = direction.normalized;
+        }
+
+        // 6. 返回最终的世界空间移动方向
+        return direction;
+    }
 }

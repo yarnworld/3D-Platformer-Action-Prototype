@@ -2186,6 +2186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6650432633027884459}
   - component: {fileID: 1017277869707059042}
+  - component: {fileID: 6955240535468836638}
   - component: {fileID: 6457142456682978307}
   - component: {fileID: 2029723394829447251}
   m_Layer: 0
@@ -2229,6 +2230,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 6b99b82d3ff7bfd4199643130476cdf4, type: 3}
+--- !u!114 &6955240535468836638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650432633027884458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057be31dabf34b958ebb36fd1b98ae26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+  - {fileID: 11400000, guid: 00bcb4afab4c5b64b839b19378747f53, type: 2}
 --- !u!114 &6457142456682978307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2241,6 +2256,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db95ea50315449ba114121ba1630c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  events:
+    onChange:
+      m_PersistentCalls:
+        m_Calls: []
+    onEnter:
+      m_PersistentCalls:
+        m_Calls: []
+    onExit:
+      m_PersistentCalls:
+        m_Calls: []
   states:
   - IdlePlayerState
   - WalkPlayerState
