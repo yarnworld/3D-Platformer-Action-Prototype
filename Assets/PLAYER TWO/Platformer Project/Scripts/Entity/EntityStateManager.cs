@@ -37,14 +37,26 @@ public abstract class EntityStateManager<T> : EntityStateManager where T : Entit
     /// </summary>
     public EntityState<T> current { get; protected set; }
 
+    /// <summary>
+    /// 该状态管理器关联的实体实例。
+    /// </summary>
+    public T entity { get; protected set; }
+    
     
     /// <summary>
     /// Unity 生命周期 Start，负责初始化实体和状态。
     /// </summary>
     protected virtual void Start()
     {
+        InitializeEntity();
         InitializeStates();
     }
+    
+    /// <summary>
+    /// 虚方法，默认实现为从当前 GameObject 获取实体组件 T。
+    /// 可以被子类重写自定义实体初始化逻辑。
+    /// </summary>
+    protected virtual void InitializeEntity() => entity = GetComponent<T>();
     
     /// <summary>
     /// 抽象方法，必须由子类实现，用于返回所有状态实例的列表。
@@ -75,6 +87,18 @@ public abstract class EntityStateManager<T> : EntityStateManager where T : Entit
         if (m_list.Count > 0)
         {
             current = m_list[0];
+        }
+    }
+    
+    /// <summary>
+    /// 每帧调用，用于更新当前状态的逻辑。
+    /// </summary>
+    public virtual void Step()
+    {
+        // 确保当前状态存在且游戏未暂停
+        if (current != null && Time.timeScale > 0)
+        {
+            current.Step(entity);
         }
     }
 }
