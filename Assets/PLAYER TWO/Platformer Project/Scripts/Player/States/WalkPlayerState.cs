@@ -19,6 +19,21 @@ public class WalkPlayerState : PlayerState
     /// </summary>
     protected override void OnStep(Player player)
     {
+        // 获取玩家输入方向（相机方向）
+        //var inputDirection = player.inputs.GetMovementCameraDirection();
+
+        // if (inputDirection.sqrMagnitude > 0)
+        // {
+        //     // 输入方向与当前水平速度的点乘，用于判断刹车阈值
+        //     var dot = Vector3.Dot(inputDirection, player.lateralVelocity);
+        //
+        //     if (dot >= player.stats.current.brakeThreshold)
+        //     {
+        //         // 超过刹车阈值 → 正常加速与面向方向
+        //         player.Accelerate(inputDirection);
+        //         player.FaceDirectionSmooth(player.lateralVelocity);
+        //     }
+        // }
     }
     
     /// <summary>

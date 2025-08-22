@@ -19,7 +19,15 @@ public class IdlePlayerState : PlayerState
     /// </summary>
     protected override void OnStep(Player player)
     {
-        Debug.Log("IdlePlayerState::OnStep");
+        //根据输入要知道往那边走
+        // 获取玩家输入方向
+        var inputDirection = player.inputs.GetMovementDirection();
+        //walk，输入操作---配置数据--速度，方向-----改变状态
+        // 如果有移动输入或水平速度 > 0 → 切换到 Walk 状态
+        if (inputDirection.sqrMagnitude > 0 || player.lateralVelocity.sqrMagnitude > 0)
+        {
+            player.states.Change<WalkPlayerState>();
+        }
     }
     
     /// <summary>

@@ -2185,8 +2185,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6650432633027884459}
-  - component: {fileID: 2029723394829447251}
+  - component: {fileID: 1017277869707059042}
   - component: {fileID: 6457142456682978307}
+  - component: {fileID: 2029723394829447251}
   m_Layer: 0
   m_Name: Lily
   m_TagString: Untagged
@@ -2215,7 +2216,7 @@ Transform:
   - {fileID: 494511523524256515}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2029723394829447251
+--- !u!114 &1017277869707059042
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2224,9 +2225,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6650432633027884458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77400166151e491e8c7698b627c36ae5, type: 3}
+  m_Script: {fileID: 11500000, guid: debd446c05c441d8b7ce17d384bf4adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actions: {fileID: -944628639613478452, guid: 6b99b82d3ff7bfd4199643130476cdf4, type: 3}
 --- !u!114 &6457142456682978307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2242,6 +2244,18 @@ MonoBehaviour:
   states:
   - IdlePlayerState
   - WalkPlayerState
+--- !u!114 &2029723394829447251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650432633027884458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77400166151e491e8c7698b627c36ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6670180705425501448
 GameObject:
   m_ObjectHideFlags: 0

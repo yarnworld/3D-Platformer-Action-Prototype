@@ -8,6 +8,22 @@ public abstract class EntityBase : MonoBehaviour
 public abstract class Entity<T> : EntityBase where T : Entity<T>
 {
     public EntityStateManager<T> states { get; protected set; }    // 状态管理器
+    
+    public Vector3 velocity { get; set; }                          // 当前速度
+
+    // 当前水平速度（XZ平面速度）
+    public Vector3 lateralVelocity
+    {
+        get { return new Vector3(velocity.x, 0, velocity.z); }
+        set { velocity = new Vector3(value.x, velocity.y, value.z); }
+    }
+
+    // 当前垂直速度（Y轴速度）
+    public Vector3 verticalVelocity
+    {
+        get { return new Vector3(0, velocity.y, 0); }
+        set { velocity = new Vector3(velocity.x, value.y, velocity.z); }
+    }
 
     protected virtual void Awake()
     {
