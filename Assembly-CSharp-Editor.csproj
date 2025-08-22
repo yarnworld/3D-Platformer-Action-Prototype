@@ -12,7 +12,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{e01c243b-fbf1-dd43-2332-4d2ffe9e5762}</ProjectGuid>
+    <ProjectGuid>{feeac3b6-fc61-485d-e9cb-6b0ae1c0e1d2}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -391,40 +391,40 @@
       <HintPath>D:\soft\UnityEditor\2023.2.20f1c1\Editor\Data\PlaybackEngines\AndroidPlayer\UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.collections@1.4.0\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.collections@1.4.0\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.ext.nunit@2.0.5\net40\unity-custom\nunit.framework.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.ext.nunit@2.0.5\net40\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="ReportGeneratorMerged">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.testtools.codecoverage@1.2.5\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.testtools.codecoverage@1.2.5\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
     </Reference>
     <Reference Include="unityplastic">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>D:\soft\UnityEditor\2023.2.20f1c1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -808,186 +808,186 @@
       <HintPath>D:\soft\UnityEditor\2023.2.20f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem.ForUI">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor.Shared">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.Shared.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.Shared.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Splines">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Splines.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Splines.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="PPv2URPConverters">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rendering.LightTransport.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Rendering.LightTransport.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Rendering.LightTransport.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Splines.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Updater">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rendering.LightTransport.Runtime">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.Rendering.LightTransport.Runtime.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.Rendering.LightTransport.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.2D.Runtime">
-      <HintPath>E:\project\kecheng2\Odyssey\Odyssey\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.2D.Runtime.dll</HintPath>
+      <HintPath>E:\project\kecheng2\OdysseyDemo\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.2D.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{33bd5ba7-7a51-8eba-4ff4-7ff8708a33f9}</Project>
+      <Project>{e7c5e73c-d440-9854-baa4-45fb1ad19584}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
   </ItemGroup>
