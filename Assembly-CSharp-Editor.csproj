@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Tools\Editor\ClassTypeNameDrawer.cs" />
-    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Tools\Editor\UIAnimatorInspector.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:\soft\UnityEditor\2023.2.20f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
