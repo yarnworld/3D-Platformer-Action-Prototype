@@ -1,18 +1,28 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 
 public class PlayerStats : EntityStats<PlayerStats>
 {
-    //==============================ã€è¿åŠ¨å±æ€§ã€‘==============================//
+    //==============================¡¾»ù´¡ÊôĞÔ¡¿==============================//
+    [Header("General Stats")]
+    public float pushForce = 4f;           // ÍÆ¶¯ÎïÌåµÄÁ¦Á¿
+    public float snapForce = 15f;          // ½«½ÇÉ«ÌùºÏµ½µØÃæµÄÎü¸½Á¦
+    public float slideForce = 10f;         // ÏÂÆÂ»¬¶¯µÄ¶îÍâÍÆÁ¦
+    public float rotationSpeed = 970f;     // Íæ¼Ò½ÇÉ«Ğı×ªËÙ¶È£¨¶È/Ãë£©
+    public float gravity = 38f;            // ÆÕÍ¨ÖØÁ¦¼ÓËÙ¶È
+    public float fallGravity = 65f;        // ÏÂÂäÊ±¶îÍâÖØÁ¦¼ÓËÙ¶È
+    public float gravityTopSpeed = 50f;    // ÖØÁ¦×÷ÓÃÏÂµÄ×î´óÏÂÂäËÙ¶È
+
+    //==============================¡¾ÔË¶¯ÊôĞÔ¡¿==============================//
     [Header("Motion Stats")]
-    public bool applySlopeFactor = true;   // æ˜¯å¦è€ƒè™‘å¡åº¦å› å­
-    public float acceleration = 13f;       // åŠ é€Ÿåº¦
-    public float deceleration = 28f;       // å‡é€Ÿåº¦
-    public float friction = 28f;           // åœ°é¢æ‘©æ“¦åŠ›
-    public float slopeFriction = 18f;      // å¡é¢æ‘©æ“¦åŠ›
-    public float topSpeed = 6f;            // æœ€é«˜é€Ÿåº¦
-    public float turningDrag = 28f;        // è½¬å‘æ—¶çš„é˜»åŠ›
-    public float airAcceleration = 32f;    // ç©ºä¸­åŠ é€Ÿåº¦
-    public float brakeThreshold = -0.8f;   // åˆ¹è½¦åˆ¤å®šé˜ˆå€¼
-    public float slopeUpwardForce = 25f;   // ä¸Šå¡æ—¶çš„é¢å¤–æ¨åŠ›
-    public float slopeDownwardForce = 28f; // ä¸‹å¡æ—¶çš„é¢å¤–æ¨åŠ›
+    public bool applySlopeFactor = true;   // ÊÇ·ñ¿¼ÂÇÆÂ¶ÈÒò×Ó
+    public float acceleration = 13f;       // ¼ÓËÙ¶È
+    public float deceleration = 28f;       // ¼õËÙ¶È
+    public float friction = 28f;           // µØÃæÄ¦²ÁÁ¦
+    public float slopeFriction = 18f;      // ÆÂÃæÄ¦²ÁÁ¦
+    public float topSpeed = 6f;            // ×î¸ßËÙ¶È
+    public float turningDrag = 28f;        // ×ªÏòÊ±µÄ×èÁ¦
+    public float airAcceleration = 32f;    // ¿ÕÖĞ¼ÓËÙ¶È
+    public float brakeThreshold = -0.8f;   // É²³µÅĞ¶¨ãĞÖµ
+    public float slopeUpwardForce = 25f;   // ÉÏÆÂÊ±µÄ¶îÍâÍÆÁ¦
+    public float slopeDownwardForce = 28f; // ÏÂÆÂÊ±µÄ¶îÍâÍÆÁ¦
 }

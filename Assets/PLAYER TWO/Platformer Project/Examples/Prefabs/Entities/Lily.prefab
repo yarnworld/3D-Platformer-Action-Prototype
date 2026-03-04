@@ -2189,6 +2189,8 @@ GameObject:
   - component: {fileID: 6955240535468836638}
   - component: {fileID: 6457142456682978307}
   - component: {fileID: 2029723394829447251}
+  - component: {fileID: 3586779895174574291}
+  - component: {fileID: 6373668849652501854}
   m_Layer: 0
   m_Name: Lily
   m_TagString: Untagged
@@ -2226,10 +2228,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6650432633027884458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: debd446c05c441d8b7ce17d384bf4adb, type: 3}
+  m_Script: {fileID: 11500000, guid: 15a4b330d1840c740b1539346907355d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: {fileID: -944628639613478452, guid: 6b99b82d3ff7bfd4199643130476cdf4, type: 3}
+  actions: {fileID: 0}
 --- !u!114 &6955240535468836638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2239,21 +2241,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6650432633027884458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 057be31dabf34b958ebb36fd1b98ae26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats:
-  - {fileID: 11400000, guid: 00bcb4afab4c5b64b839b19378747f53, type: 2}
---- !u!114 &6457142456682978307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6650432633027884458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3db95ea50315449ba114121ba1630c5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 002ea66574ff5564baadd8cc15f7ad42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   events:
@@ -2266,9 +2254,21 @@ MonoBehaviour:
     onExit:
       m_PersistentCalls:
         m_Calls: []
-  states:
-  - IdlePlayerState
-  - WalkPlayerState
+  states: []
+--- !u!114 &6457142456682978307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650432633027884458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e3a4da6e4f6cc54db8f89f08b2f2fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+  - {fileID: 11400000, guid: 00bcb4afab4c5b64b839b19378747f53, type: 2}
 --- !u!114 &2029723394829447251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,9 +2278,63 @@ MonoBehaviour:
   m_GameObject: {fileID: 6650432633027884458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77400166151e491e8c7698b627c36ae5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f65ba8f2819cb34187828043d98d6ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3586779895174574291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650432633027884458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb416d7de918b740b89e5268142b9d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: State
+  lastStateName: Last State
+  lateralSpeedName: Lateral Speed
+  verticalSpeedName: Vertical Speed
+  lateralAnimationSpeedName: Lateral Animation Speed
+  healthName: Health
+  jumpCounterName: Jump Counter
+  isGroundedName: Is Grounded
+  isHoldingName: Is Holding
+  onStateChangedName: On State Changed
+  minLateralAnimationSpeed: 0.5
+  forcedTransitions:
+  - fromStateId: 15
+    animationLayer: 0
+    toAnimationState: Idle
+  animator: {fileID: 301645532738941841}
+--- !u!143 &6373668849652501854
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650432633027884458}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.005
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6670180705425501448
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,2 +1,4 @@
-﻿
-public abstract class PlayerState : EntityState<Player> { }
+public abstract class PlayerState:EntityState<Player>
+{
+
+}

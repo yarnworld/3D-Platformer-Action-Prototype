@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f697a4220f4516b9851898991942e3, type: 3}
+  m_Script: {fileID: 11500000, guid: a98ccb95df9927f4f92de57981734b8a, type: 3}
   m_Name: RegularPlayerStats
   m_EditorClassIdentifier: 
   applySlopeFactor: 1
