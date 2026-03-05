@@ -2231,7 +2231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a4b330d1840c740b1539346907355d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: {fileID: 0}
+  actions: {fileID: -944628639613478452, guid: 6b99b82d3ff7bfd4199643130476cdf4, type: 3}
 --- !u!114 &6955240535468836638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2254,7 +2254,11 @@ MonoBehaviour:
     onExit:
       m_PersistentCalls:
         m_Calls: []
-  states: []
+  states:
+  - IdlePlayerState
+  - FallPlayerState
+  - WalkPlayerState
+  - BrakePlayerState
 --- !u!114 &6457142456682978307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2281,6 +2285,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f65ba8f2819cb34187828043d98d6ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityEvents:
+    OnGroundEnter:
+      m_PersistentCalls:
+        m_Calls: []
+    OnGroundExit:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRailsEnter:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRailsExit:
+      m_PersistentCalls:
+        m_Calls: []
+  playerEvents:
+    OnJump:
+      m_PersistentCalls:
+        m_Calls: []
+    OnHurt:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDie:
+      m_PersistentCalls:
+        m_Calls: []
+    OnSpin:
+      m_PersistentCalls:
+        m_Calls: []
+    OnPickUp:
+      m_PersistentCalls:
+        m_Calls: []
+    OnThrow:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStompStarted:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStompFalling:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStompLanding:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStompEnding:
+      m_PersistentCalls:
+        m_Calls: []
+    OnLedgeGrabbed:
+      m_PersistentCalls:
+        m_Calls: []
+    OnLedgeClimbing:
+      m_PersistentCalls:
+        m_Calls: []
+    OnAirDive:
+      m_PersistentCalls:
+        m_Calls: []
+    OnBackflip:
+      m_PersistentCalls:
+        m_Calls: []
+    OnGlidingStart:
+      m_PersistentCalls:
+        m_Calls: []
+    OnGlidingStop:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDashStarted:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDashEnded:
+      m_PersistentCalls:
+        m_Calls: []
+  skin: {fileID: 0}
 --- !u!114 &3586779895174574291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3036,7 +3109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5062800599606034852
 Transform:
   m_ObjectHideFlags: 0
