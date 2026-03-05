@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public  class PlayerInputManager : MonoBehaviour
+public class PlayerInputManager : MonoBehaviour
 {
     // 输入动作资源（在 Input System 中配置的 InputActionAsset）
     public InputActionAsset actions;
@@ -12,11 +12,27 @@ public  class PlayerInputManager : MonoBehaviour
     // 输入动作缓存
     protected InputAction m_movement;
     protected InputAction m_look;
+    protected InputAction m_jump;
+    protected InputAction m_crouch;
+    protected InputAction m_dash;
+    protected InputAction m_stomp;
+    protected InputAction m_spin;
+    protected InputAction m_airDive;
+    protected InputAction m_dive;
+    protected InputAction m_glide;
+    protected InputAction m_grindBrake;
+    protected InputAction m_releaseLedge;
+    protected InputAction m_pause;
+    protected InputAction m_run;
 
     // 主摄像机引用，用于计算相对移动方向
     protected Camera m_camera;
     // 常量：鼠标设备名称
     protected const string k_mouseDeviceName = "Mouse";
+    // 最近一次按下跳跃的时间，用于跳跃缓冲
+    protected float? m_lastJumpTime;
+    // 常量：跳跃缓冲时长（单位：秒）
+    protected const float k_jumpBuffer = 0.15f;
 
     protected virtual void Awake() => CacheActions();
 
@@ -25,6 +41,14 @@ public  class PlayerInputManager : MonoBehaviour
         m_camera = Camera.main;
         actions.Enable();
     }
+    protected virtual void Update()
+    {
+        // 记录跳跃按下时间，用于实现跳跃缓冲
+        if (m_jump.WasPressedThisFrame())
+        {
+            m_lastJumpTime = Time.time;
+        }
+    }
     protected virtual void OnEnable() => actions?.Enable();
     protected virtual void OnDisable() => actions?.Disable();
 
@@ -32,6 +56,18 @@ public  class PlayerInputManager : MonoBehaviour
     {
         m_movement = actions["Movement"];
         m_look = actions["Look"];
+        m_jump = actions["Jump"];
+        m_crouch = actions["Crouch"];
+        m_dash = actions["Dash"];
+        m_stomp = actions["Stomp"];
+        m_spin = actions["Spin"];
+        m_airDive = actions["AirDive"];
+        m_dive = actions["Dive"];
+        m_glide = actions["Glide"];
+        m_grindBrake = actions["Grind Brake"];
+        m_releaseLedge = actions["ReleaseLedge"];
+        m_pause = actions["Pause"];
+        m_run = actions["Run"];
     }
     /// <summary>
     /// 获取观察方向输入（鼠标时直接返回，手柄时使用死区修正）
@@ -115,4 +151,33 @@ public  class PlayerInputManager : MonoBehaviour
         // 6. 返回最终的世界空间移动方向
         return direction;
     }
+
+    /// <summary>
+    /// 判断是否触发跳跃（支持跳跃缓冲）
+    /// </summary>
+    public virtual bool GetJumpDown()
+    {
+        if (m_lastJumpTime != null &&
+            Time.time - m_lastJumpTime < k_jumpBuffer)
+        {
+            m_lastJumpTime = null;
+            return true;
+        }
+        return false;
+    }
+
+    public virtual bool GetJumpUp() => m_jump.WasReleasedThisFrame();
+    public virtual bool GetDashDown() => m_dash.WasPressedThisFrame();
+    public virtual bool GetStompDown() => m_stomp.WasPressedThisFrame();
+    public virtual bool GetSpinDown() => m_spin.WasPressedThisFrame();
+    public virtual bool GetAirDiveDown() => m_airDive.WasPressedThisFrame();
+    public virtual bool GetReleaseLedgeDown() => m_releaseLedge.WasPressedThisFrame();
+    public virtual bool GetDive() => m_dive.IsPressed();
+    public virtual bool GetGlide() => m_glide.IsPressed();
+    public virtual bool GetGrindBrake() => m_grindBrake.IsPressed();
+    public virtual bool GetCrouchAndCraw() => m_crouch.IsPressed();
+    public virtual bool GetPauseDown() => m_pause.WasPressedThisFrame();
+    // 以下是输入状态的快捷访问方法
+    public virtual bool GetRun() => m_run.IsPressed();
+    public virtual bool GetRunUp() => m_run.WasReleasedThisFrame();
 }

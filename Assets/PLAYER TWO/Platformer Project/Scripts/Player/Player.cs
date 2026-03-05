@@ -3,11 +3,53 @@ using UnityEngine.InputSystem;
 
 public class Player : Entity<Player>
 {
+    public PlayerEvents playerEvents; // 玩家事件（受伤、死亡、拾取物品等触发的事件）
     /// <summary> 玩家输入管理器实例 </summary>
     public PlayerInputManager inputs { get; protected set; }
 
     /// <summary> 玩家数值管理器实例 </summary>
     public PlayerStatsManager stats { get; protected set; }
+
+    /// <summary> 玩家已跳跃的次数（用于多段跳） </summary>
+    public int jumpCounter { get; protected set; }
+
+    /// <summary> 玩家已进行的空中冲刺次数 </summary>
+    public int airDashCounter { get; protected set; }
+
+    /// <summary> 上一次冲刺的时间 </summary>
+    public float lastDashTime { get; protected set; }
+
+    /// <summary> 玩家已进行的空中旋转次数 </summary>
+    public int airSpinCounter { get; protected set; }
+
+    /// <summary> 玩家是否在水中 </summary>
+    public bool onWater { get; protected set; }
+
+    /// <summary> 生命值实例 </summary>
+    public Health health { get; protected set; }
+
+
+    // 皮肤初始位置与旋转（用于恢复外观）
+    protected Vector3 m_skinInitialPosition = Vector3.zero;
+    protected Quaternion m_skinInitialRotation = Quaternion.identity;
+
+    public Transform skin;             // 玩家角色皮肤（外观的 Transform，用于重置姿态）
+
+    /// <summary> 玩家是否正在持有物品 </summary>
+    public bool holding { get; protected set; }
+
+    /// <summary> 玩家当前攀爬的 Pole（竿子/杆子） </summary>
+    public Pole pole { get; protected set; }
+
+    /// <summary> 玩家最后接触到的墙面的法线（用于墙跳等逻辑） </summary>
+    public Vector3 lastWallNormal { get; protected set; }
+
+    // 玩家从水中出来时的微小偏移
+    protected const float k_waterExitOffset = 0.25f;
+
+    /// <summary> 玩家当前所在的水域碰撞体 </summary>
+    public Collider water { get; protected set; }
+
     protected override void Awake()
     {
         base.Awake();
@@ -63,7 +105,6 @@ public class Player : Entity<Player>
     /// </summary>
     public virtual void Gravity()
     {
-        isGrounded = false;
         if (!isGrounded && verticalVelocity.y > -stats.current.gravityTopSpeed)
         {
             var speed = verticalVelocity.y;
@@ -75,5 +116,40 @@ public class Player : Entity<Player>
             speed = Mathf.Max(speed, -stats.current.gravityTopSpeed);
             verticalVelocity = new Vector3(0, speed, 0);
         }
+    }
+    /// <summary>
+    /// 执行跳跃逻辑（包括多段跳、土狼跳、持物判定）
+    /// </summary>
+    public virtual void Jump()
+    {
+        // 是否可以进行二段 / 多段跳
+        var canMultiJump = (jumpCounter > 0) && (jumpCounter < stats.current.multiJumps);
+        // 土狼跳判定（离地一小段时间内仍然可以跳）
+        var canCoyoteJump = (jumpCounter == 0) && (Time.time < lastGroundTime + stats.current.coyoteJumpThreshold);
+        Debug.Log(isGrounded);
+        // 地面 / 轨道 / 多段跳 / 土狼跳条件满足时才允许跳跃
+        if ((isGrounded ))
+        {
+            if (inputs.GetJumpDown()) // 按下跳跃键
+            {
+                Jump(stats.current.maxJumpHeight);
+            }
+        }
+
+        // 松开跳跃键时，如果还在上升，限制为最小跳跃高度（实现“按得短跳得低”的效果）,早松手就早限制
+        if (inputs.GetJumpUp() && (jumpCounter > 0) && (verticalVelocity.y > stats.current.minJumpHeight))
+        {
+            verticalVelocity = Vector3.up * stats.current.minJumpHeight;
+        }
+    }
+    /// <summary>
+    /// 执行一个标准的向上跳跃
+    /// </summary>
+    public virtual void Jump(float height)
+    {
+        jumpCounter++; // 增加跳跃计数
+        verticalVelocity = Vector3.up * height; // 设置垂直速度
+        states.Change<FallPlayerState>(); // 切换为下落状态（跳起后最终会落下）
+        playerEvents.OnJump?.Invoke(); // 触发跳跃事件
     }
 }
