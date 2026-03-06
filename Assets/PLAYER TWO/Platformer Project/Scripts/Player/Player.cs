@@ -57,6 +57,21 @@ public class Player : Entity<Player>
         InitializeStats();
         InitializeHealth();
         InitializeTag();
+        // 监听落地事件，重置跳跃/空中技能次数
+        entityEvents.OnGroundEnter.AddListener(() =>
+        {
+            ResetJumps();
+            ResetAirDash();
+            ResetAirSpins();
+        });
+
+        // 监听进入轨道事件，重置空中技能并进入滑轨状态
+        entityEvents.OnRailsEnter.AddListener(() =>
+        {
+            ResetJumps();
+            ResetAirSpins();
+            //ResetAirDash();
+        });
     }
 
     // 初始化输入
@@ -131,6 +146,29 @@ public class Player : Entity<Player>
         Accelerate(direction, stats.current.backflipTurningDrag, stats.current.backflipAirAcceleration,
             stats.current.backflipTopSpeed);
     }
+
+
+    /// <summary>
+    /// 冲刺（包括地面冲刺和空中冲刺）
+    /// </summary>
+    public virtual void Dash()
+    {
+        // 是否可以空中冲刺
+        var canAirDash = stats.current.canAirDash && !isGrounded &&
+                         airDashCounter < stats.current.allowedAirDashes;
+
+        // 是否可以地面冲刺（冷却结束）
+        var canGroundDash = stats.current.canGroundDash && isGrounded &&
+                            Time.time - lastDashTime > stats.current.groundDashCoolDown;
+
+        // 如果按下冲刺键，且符合条件
+        if (inputs.GetDashDown() && (canAirDash || canGroundDash))
+        {
+            if (!isGrounded) airDashCounter++; // 空中冲刺计数+1
+            lastDashTime = Time.time; // 记录冲刺时间
+            states.Change<DashPlayerState>(); // 切换到冲刺状态
+        }
+    }
     /// <summary>
     /// 施加重力，使玩家下落
     /// </summary>
@@ -163,7 +201,7 @@ public class Player : Entity<Player>
         var canCoyoteJump = (jumpCounter == 0) && (Time.time < lastGroundTime + stats.current.coyoteJumpThreshold);
 
         // 地面 / 轨道 / 多段跳 / 土狼跳条件满足时才允许跳跃
-        if ((isGrounded ))
+        if ((isGrounded || canMultiJump || canCoyoteJump))
         {
             if (inputs.GetJumpDown()) // 按下跳跃键
             {
@@ -187,6 +225,29 @@ public class Player : Entity<Player>
         states.Change<FallPlayerState>(); // 切换为下落状态（跳起后最终会落下）
         playerEvents.OnJump?.Invoke(); // 触发跳跃事件
     }
+    /// <summary>
+    /// 执行带方向的跳跃（比如斜向跳）
+    /// </summary>
+    public virtual void DirectionalJump(Vector3 direction, float height, float distance)
+    {
+        jumpCounter++;
+        verticalVelocity = Vector3.up * height; // 垂直上升
+        lateralVelocity = direction * distance; // 水平方向的推动
+        playerEvents.OnJump?.Invoke();
+    }
+    /// <summary>
+    /// 重置空中冲刺计数
+    /// </summary>
+    public virtual void ResetAirDash() => airDashCounter = 0;
+
+    /// <summary>
+    /// 重置空中旋转次数
+    /// </summary>
+    public virtual void ResetAirSpins() => airSpinCounter = 0;
+    /// <summary>
+    /// 重置跳跃计数（回到 0，常用于落地时）
+    /// </summary>
+    public virtual void ResetJumps() => jumpCounter = 0;
     /// <summary>
     /// 设置跳跃计数为指定值（特殊用途）
     /// </summary>

@@ -29,7 +29,7 @@ public class PlayerStats : EntityStats<PlayerStats>
 
     //==============================【跳跃】==============================//
     [Header("Jump Stats")]
-    public int multiJumps = 1;                 // 允许的额外跳跃次数（多段跳）
+    public int multiJumps = 2;                 // 允许的额外跳跃次数（多段跳）
     public float coyoteJumpThreshold = 0.15f;  // 土狼跳判定时间（离地后还能跳的时间窗口）
     public float maxJumpHeight = 17f;          // 最大跳跃高度
     public float minJumpHeight = 10f;          // 最小跳跃高度（轻按跳）
