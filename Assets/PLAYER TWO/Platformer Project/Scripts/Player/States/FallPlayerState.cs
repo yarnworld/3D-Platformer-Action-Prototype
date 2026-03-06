@@ -30,7 +30,7 @@ public class FallPlayerState : PlayerState
         player.FaceDirectionSmooth(player.lateralVelocity); // 平滑转向，使角色朝向移动方向
         player.AccelerateToInputDirection();  // 根据玩家输入方向加速
         player.Jump();                        // 空中可跳跃
-        //player.Spin();                        // 空中旋转动作
+        player.Spin();                        // 空中旋转动作
         player.Dash();                        // 空中冲刺
         //player.AirDive();                     // 空中俯冲动作
         player.StompAttack();                 // 空中踩击攻击

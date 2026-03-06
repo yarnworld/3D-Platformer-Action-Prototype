@@ -160,7 +160,7 @@ public class Player : Entity<Player>
         // 是否可以地面冲刺（冷却结束）
         var canGroundDash = stats.current.canGroundDash && isGrounded &&
                             Time.time - lastDashTime > stats.current.groundDashCoolDown;
-
+        Debug.Log(inputs.GetDashDown());
         // 如果按下冲刺键，且符合条件
         if (inputs.GetDashDown() && (canAirDash || canGroundDash))
         {
