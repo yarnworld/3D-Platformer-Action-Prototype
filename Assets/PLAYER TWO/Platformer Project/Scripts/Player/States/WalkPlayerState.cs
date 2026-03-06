@@ -22,8 +22,14 @@ public class WalkPlayerState : PlayerState
     /// </summary>
     protected override void OnStep(Player player)
     {
-        player.Gravity();               // 应用重力
-        player.Jump();                  //跳跃检测
+        // 重力处理
+        player.Gravity();
+        // 保持贴地
+        player.SnapToGround();
+        // 跳跃处理
+        player.Jump();
+        // 下落处理
+        player.Fall();
         // 获取玩家输入方向（相机方向）
         var inputDirection = player.inputs.GetMovementCameraDirection();
 
@@ -54,6 +60,11 @@ public class WalkPlayerState : PlayerState
             {
                 player.states.Change<IdlePlayerState>();
             }
+        }
+        // 玩家按下蹲或爬行 → 切换到蹲伏状态
+        if (player.inputs.GetCrouchAndCraw())
+        {
+            player.states.Change<CrouchPlayerState>();
         }
     }
 

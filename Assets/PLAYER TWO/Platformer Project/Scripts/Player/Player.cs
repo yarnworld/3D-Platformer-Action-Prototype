@@ -219,4 +219,16 @@ public class Player : Entity<Player>
             // }
         }
     }
+    /// <summary> 玩家是否可以站立（通过 SphereCast 检测头顶是否有障碍物） </summary>
+    public virtual bool canStandUp => !SphereCast(Vector3.up, originalHeight);
+    /// <summary>
+    /// 如果玩家不在地面上，切换到下落状态
+    /// </summary>
+    public virtual void Fall()
+    {
+        if (!isGrounded)
+        {
+            states.Change<FallPlayerState>();
+        }
+    }
 }
