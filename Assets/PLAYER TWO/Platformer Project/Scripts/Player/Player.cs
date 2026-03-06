@@ -117,6 +117,12 @@ public class Player : Entity<Player>
             Decelerate(stats.current.friction);      // 普通摩擦
     }
     /// <summary>
+    /// 在指定方向上平滑移动玩家（匍匐状态的参数）
+    /// </summary>
+    public virtual void CrawlingAccelerate(Vector3 direction) =>
+        Accelerate(direction, stats.current.crawlingTurningSpeed, stats.current.crawlingAcceleration,
+            stats.current.crawlingTopSpeed);
+    /// <summary>
     /// 施加重力，使玩家下落
     /// </summary>
     public virtual void Gravity()

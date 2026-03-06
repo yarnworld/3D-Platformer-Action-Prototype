@@ -43,7 +43,7 @@ public class CrouchPlayerState : PlayerState
                 // 如果速度为 0 → 进入爬行状态（从蹲姿转为爬行移动）
                 if (player.lateralVelocity.sqrMagnitude == 0)
                 {
-                    //player.states.Change<CrawlingPlayerState>();
+                    player.states.Change<CrawlingPlayerState>();
                 }
             }
             // 2. 玩家在下蹲状态按下“跳跃键” → 执行后空翻

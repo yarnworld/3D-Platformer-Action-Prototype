@@ -77,6 +77,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\CharacterAnimatorInvoker.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\TeleportObstacle.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\PatrolByPointsCharacterState.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\CrawlingPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\OscillateScale.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Hazard.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CandyKing.cs" />
