@@ -26,9 +26,9 @@ public class FallPlayerState : PlayerState
     protected override void OnStep(Player player)
     {
         player.Gravity();                      // 应用重力，让角色自然下落
-        //player.SnapToGround();                // 吸附地面，防止悬空抖动
+        player.SnapToGround();                // 吸附地面，防止悬空抖动
         player.FaceDirectionSmooth(player.lateralVelocity); // 平滑转向，使角色朝向移动方向
-        //player.AccelerateToInputDirection();  // 根据玩家输入方向加速
+        player.AccelerateToInputDirection();  // 根据玩家输入方向加速
         player.Jump();                        // 空中可跳跃
         //player.Spin();                        // 空中旋转动作
         //player.Dash();                        // 空中冲刺

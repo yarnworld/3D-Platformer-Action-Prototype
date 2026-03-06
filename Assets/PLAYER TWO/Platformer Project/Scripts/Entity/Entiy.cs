@@ -318,7 +318,7 @@ public abstract class Entity<T>:EntityBase where T : Entity<T>
     // 离开地面状态（角色刚刚离开地面时调用）
     protected virtual void ExitGround()
     {
-        Debug.Log("Exiting ground state");
+
         // 只有当前在地面状态时才执行
         if (isGrounded)
         {
@@ -377,7 +377,7 @@ public abstract class Entity<T>:EntityBase where T : Entity<T>
         // 向下发射球体射线检测地面，并且角色的垂直速度 ≤ 0（下落或静止状态）
         if (SphereCast(Vector3.down, distance, out var hit) && verticalVelocity.y <= 0)
         {
-            Debug.Log("Ground detected: " + hit.collider.name);
+
             // 如果之前不在地面状态
             if (!isGrounded)
             {

@@ -75,7 +75,7 @@ public class Health : MonoBehaviour
     /// <summary>
     /// 是否死亡（生命值为 0）
     /// </summary>
-    public virtual bool isEmpty() => current == 0;
+    public virtual bool isEmpty => current == 0;
 
     /// <summary>
     /// 是否处于受伤冷却中（还不能再次受伤）

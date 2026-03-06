@@ -55,12 +55,20 @@ public class Player : Entity<Player>
         base.Awake();
         InitializeInputs();
         InitializeStats();
+        InitializeHealth();
+        InitializeTag();
     }
 
     // 初始化输入
     protected virtual void InitializeInputs() => inputs = GetComponent<PlayerInputManager>();
     // 初始化数值
     protected virtual void InitializeStats() => stats = GetComponent<PlayerStatsManager>();
+
+    // 初始化生命
+    protected virtual void InitializeHealth() => health = GetComponent<Health>();
+
+    // 初始化标签（标记为 Player）
+    protected virtual void InitializeTag() => tag = GameTags.Player;
     /// <summary>
     /// 在指定方向上平滑移动玩家（加速度控制）
     /// </summary>
@@ -80,6 +88,14 @@ public class Player : Entity<Player>
         // 调用底层 Accelerate(方向, 转向阻尼, 加速度, 最大速度)
         Accelerate(direction, turningDrag, finalAcceleration, topSpeed);
 
+    }
+    /// <summary>
+    /// 根据相机方向来平滑移动玩家
+    /// </summary>
+    public virtual void AccelerateToInputDirection()
+    {
+        var inputDirection = inputs.GetMovementCameraDirection(); // 输入相对于相机的方向
+        Accelerate(inputDirection);
     }
     /// <summary>
     /// 平滑朝向某个方向旋转（陆地旋转速度）
@@ -118,6 +134,10 @@ public class Player : Entity<Player>
         }
     }
     /// <summary>
+    /// 通过 snap 力量强制把玩家贴到地面上
+    /// </summary>
+    public virtual void SnapToGround() => SnapToGround(stats.current.snapForce);
+    /// <summary>
     /// 执行跳跃逻辑（包括多段跳、土狼跳、持物判定）
     /// </summary>
     public virtual void Jump()
@@ -126,7 +146,7 @@ public class Player : Entity<Player>
         var canMultiJump = (jumpCounter > 0) && (jumpCounter < stats.current.multiJumps);
         // 土狼跳判定（离地一小段时间内仍然可以跳）
         var canCoyoteJump = (jumpCounter == 0) && (Time.time < lastGroundTime + stats.current.coyoteJumpThreshold);
-        Debug.Log(isGrounded);
+
         // 地面 / 轨道 / 多段跳 / 土狼跳条件满足时才允许跳跃
         if ((isGrounded ))
         {
@@ -151,5 +171,52 @@ public class Player : Entity<Player>
         verticalVelocity = Vector3.up * height; // 设置垂直速度
         states.Change<FallPlayerState>(); // 切换为下落状态（跳起后最终会落下）
         playerEvents.OnJump?.Invoke(); // 触发跳跃事件
+    }
+    // 让角色立即朝向某个方向（瞬间转向）
+    public virtual void FaceDirection(Vector3 direction)
+    {
+        // 如果方向向量有效（不是零向量）
+        if (direction.sqrMagnitude > 0)
+        {
+            // 生成一个面向 direction 方向的旋转（保持世界Y轴为上）
+            var rotation = Quaternion.LookRotation(direction, Vector3.up);
+
+            // 直接设置物体的旋转
+            transform.rotation = rotation;
+        }
+    }
+    /// <summary>
+    /// 对玩家造成伤害（带击退与受伤反应）
+    /// </summary>
+    /// <param name="amount">要扣除的生命值</param>
+    /// <param name="origin">伤害来源位置（用于计算击退方向）</param>
+    public override void ApplyDamage(int amount, Vector3 origin)
+    {
+        if (!health.isEmpty && !health.recovering) // 确保玩家未死亡且不在恢复无敌状态
+        {
+            health.Damage(amount); // 扣血
+            var damageDir = origin - transform.position; // 计算受击方向
+            damageDir.y = 0; // 忽略垂直方向
+            damageDir = damageDir.normalized;
+            FaceDirection(damageDir); // 面向攻击方向
+
+            // 受伤时向后击退
+            lateralVelocity = -transform.forward * stats.current.hurtBackwardsForce;
+
+            if (!onWater) // 如果不在水中，则会被击飞向上并进入受伤状态
+            {
+                verticalVelocity = Vector3.up * stats.current.hurtUpwardForce;
+                states.Change<HurtPlayerState>();
+            }
+
+            playerEvents.OnHurt?.Invoke(); // 触发受伤事件
+
+            // 如果血量空了 -> 死亡
+            // if (health.isEmpty)
+            // {
+            //     Throw(); // 丢掉物品
+            //     playerEvents.OnDie?.Invoke(); // 触发死亡事件
+            // }
+        }
     }
 }

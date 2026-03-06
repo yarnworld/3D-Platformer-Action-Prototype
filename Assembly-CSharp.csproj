@@ -78,6 +78,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\TeleportObstacle.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\PatrolByPointsCharacterState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\OscillateScale.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Hazard.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CandyKing.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\LadderObstacle.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\JumpMovementState.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\RotateMovementState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstaclePath.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Player\PlayerCharacterInput.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\HurtPlayerState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Game\GameTags.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\EntityStats.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\PatrolCharacterState.cs" />
@@ -111,8 +113,10 @@
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Pole.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Manager\CharacterManager.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\MoveToNavMeshMovementState.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\CrouchPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\IdleMovementState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\EntityEvents.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\Interface\IEntityContact.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\OscillateRotation.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstacleCreateManager.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerStatsManager.cs" />
