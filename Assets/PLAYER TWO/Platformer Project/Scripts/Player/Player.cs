@@ -146,7 +146,11 @@ public class Player : Entity<Player>
         Accelerate(direction, stats.current.backflipTurningDrag, stats.current.backflipAirAcceleration,
             stats.current.backflipTopSpeed);
     }
-
+    /// <summary>
+    /// 在指定方向上平滑移动玩家（水下的参数）
+    /// </summary>
+    public virtual void WaterAcceleration(Vector3 direction) =>
+        Accelerate(direction, stats.current.waterTurningDrag, stats.current.swimAcceleration, stats.current.swimTopSpeed);
 
     /// <summary>
     /// 冲刺（包括地面冲刺和空中冲刺）
@@ -321,6 +325,10 @@ public class Player : Entity<Player>
         }
     }
     /// <summary>
+    /// 平滑朝向某个方向旋转（水中旋转速度）
+    /// </summary>
+    public virtual void WaterFaceDirection(Vector3 direction) => FaceDirection(direction, stats.current.waterRotationSpeed);
+    /// <summary>
     /// 对玩家造成伤害（带击退与受伤反应）
     /// </summary>
     /// <param name="amount">要扣除的生命值</param>
@@ -366,6 +374,57 @@ public class Player : Entity<Player>
         if (!isGrounded)
         {
             states.Change<FallPlayerState>();
+        }
+    }
+    /// <summary>
+    /// 进入水中（切换到游泳状态）
+    /// </summary>
+    /// <param name="water">水的碰撞体</param>
+    public virtual void EnterWater(Collider water)
+    {
+        if (!onWater && !health.isEmpty)
+        {
+            //Throw();  // 丢掉手上的物品
+            onWater = true;
+            this.water = water;
+            states.Change<SwimPlayerState>(); // 切换到游泳状态
+        }
+    }
+
+    /// <summary>
+    /// 离开水域
+    /// </summary>
+    public virtual void ExitWater()
+    {
+        if (onWater)
+        {
+            onWater = false;
+        }
+    } 
+    /// <summary>
+    /// 触发检测（玩家停留在触发器内）
+    /// 用于检测是否进入水体或离开水体
+    /// </summary>
+    protected virtual void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag(GameTags.VolumeWater))
+        {
+            // 如果当前不在水中，但进入了水体包围盒
+            if (!onWater && other.bounds.Contains(unsizedPosition))
+            {
+                EnterWater(other);
+            }
+            // 如果已经在水中，则检测是否离开
+            else if (onWater)
+            {
+                // 计算一个向下偏移点，判断是否离开水面
+                var exitPoint = position + Vector3.down * k_waterExitOffset;
+
+                if (!other.bounds.Contains(exitPoint))
+                {
+                    ExitWater();
+                }
+            }
         }
     }
 }

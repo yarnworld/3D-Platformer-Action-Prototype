@@ -61,6 +61,7 @@
     <Analyzer Include="E:\unity\2023.2.20f1c1\2023.2.20f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Volume.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\IMovementState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\EntityStateManagerEvents.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\LadderMovementState.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\FallPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstacleGroup.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerStats.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\SwimPlayerState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\StompPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\CharacterMovementStateBase.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Health.cs" />
