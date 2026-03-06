@@ -123,6 +123,15 @@ public class Player : Entity<Player>
         Accelerate(direction, stats.current.crawlingTurningSpeed, stats.current.crawlingAcceleration,
             stats.current.crawlingTopSpeed);
     /// <summary>
+    /// 在空翻动作中平滑移动玩家（后空翻参数）
+    /// </summary>
+    public virtual void BackflipAcceleration()
+    {
+        var direction = inputs.GetMovementCameraDirection();
+        Accelerate(direction, stats.current.backflipTurningDrag, stats.current.backflipAirAcceleration,
+            stats.current.backflipTopSpeed);
+    }
+    /// <summary>
     /// 施加重力，使玩家下落
     /// </summary>
     public virtual void Gravity()
@@ -178,6 +187,23 @@ public class Player : Entity<Player>
         states.Change<FallPlayerState>(); // 切换为下落状态（跳起后最终会落下）
         playerEvents.OnJump?.Invoke(); // 触发跳跃事件
     }
+    /// <summary>
+    /// 设置跳跃计数为指定值（特殊用途）
+    /// </summary>
+    public virtual void SetJumps(int amount) => jumpCounter = amount;
+    /// <summary>
+    /// 后空翻
+    /// </summary>
+    public virtual void Backflip(float force)
+    {
+        if (stats.current.canBackflip && !holding)
+        {
+            verticalVelocity = Vector3.up * stats.current.backflipJumpHeight; // 上跳力
+            lateralVelocity = -transform.forward * force; // 向后推力
+            states.Change<BackflipPlayerState>();
+            playerEvents.OnBackflip.Invoke();
+        }
+    }
     // 让角色立即朝向某个方向（瞬间转向）
     public virtual void FaceDirection(Vector3 direction)
     {
@@ -227,6 +253,8 @@ public class Player : Entity<Player>
     }
     /// <summary> 玩家是否可以站立（通过 SphereCast 检测头顶是否有障碍物） </summary>
     public virtual bool canStandUp => !SphereCast(Vector3.up, originalHeight);
+
+
     /// <summary>
     /// 如果玩家不在地面上，切换到下落状态
     /// </summary>

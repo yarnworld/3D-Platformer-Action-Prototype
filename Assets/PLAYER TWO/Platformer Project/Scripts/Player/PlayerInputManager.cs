@@ -96,6 +96,14 @@ public class PlayerInputManager : MonoBehaviour
         return m_look.activeControl.device.name.Equals(k_mouseDeviceName);
     }
     /// <summary>
+    /// 临时锁定移动方向输入
+    /// </summary>
+    /// <param name="duration">锁定时长（秒）</param>
+    public virtual void LockMovementDirection(float duration = 0.25f)
+    {
+        m_movementDirectionUnlockTime = Time.time + duration;
+    }
+    /// <summary>
     /// 获取移动方向输入（带十字型死区判断）
     /// 如果在锁定时间内，则返回 Vector3.zero
     /// </summary>
