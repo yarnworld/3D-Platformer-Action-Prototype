@@ -50,7 +50,7 @@ public class BackflipPlayerState : PlayerState
         else if (player.verticalVelocity.y < 0)
         {
             //player.Spin();        // Ðý×ª¹¥»÷
-            //player.StompAttack(); // ²ÈÌ¤¹¥»÷
+            player.StompAttack(); // ²ÈÌ¤¹¥»÷
             //player.AirDive();     // ¿ÕÖÐÏÂÑ¹¹¥»÷
             //player.Glide();       // »¬Ïè
         }

@@ -130,6 +130,7 @@
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\FallPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstacleGroup.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerStats.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\StompPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\CharacterMovementStateBase.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Health.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\Entiy.cs" />

@@ -187,6 +187,16 @@ public class Player : Entity<Player>
         }
     }
     /// <summary>
+    /// 踩踏攻击（从空中下踩敌人）
+    /// </summary>
+    public virtual void StompAttack()
+    {
+        if (!isGrounded && !holding && stats.current.canStompAttack && inputs.GetStompDown())
+        {
+            states.Change<StompPlayerState>();
+        }
+    }
+    /// <summary>
     /// 通过 snap 力量强制把玩家贴到地面上
     /// </summary>
     public virtual void SnapToGround() => SnapToGround(stats.current.snapForce);
