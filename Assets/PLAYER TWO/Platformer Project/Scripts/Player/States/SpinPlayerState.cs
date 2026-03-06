@@ -41,7 +41,7 @@ public class SpinPlayerState : PlayerState
     {
         player.Gravity(); // 应用重力
         player.SnapToGround(); // 修正玩家贴地位置
-        //player.AirDive(); // 空中冲刺
+        player.AirDive(); // 空中冲刺
         player.StompAttack(); // 空中踩踏攻击
         player.AccelerateToInputDirection(); // 根据输入方向加速移动
 

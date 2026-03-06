@@ -32,7 +32,7 @@ public class FallPlayerState : PlayerState
         player.Jump();                        // 空中可跳跃
         player.Spin();                        // 空中旋转动作
         player.Dash();                        // 空中冲刺
-        //player.AirDive();                     // 空中俯冲动作
+        player.AirDive();                     // 空中俯冲动作
         player.StompAttack();                 // 空中踩击攻击
         //player.Glide();                       // 滑翔动作
         //player.LedgeGrab();                   // 抓取悬挂

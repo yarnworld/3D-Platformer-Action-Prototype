@@ -197,6 +197,18 @@ public class Player : Entity<Player>
         }
     }
     /// <summary>
+    /// 空中俯冲（下劈攻击）
+    /// </summary>
+    public virtual void AirDive()
+    {
+        // 必须允许空中俯冲，且不在地面上，没有拿物品，按下了空中俯冲按键
+        if (stats.current.canAirDive && !isGrounded && !holding && inputs.GetAirDiveDown())
+        {
+            states.Change<AirDivePlayerState>(); // 切换到空中俯冲状态
+            playerEvents.OnAirDive?.Invoke();
+        }
+    }
+    /// <summary>
     /// 通过 snap 力量强制把玩家贴到地面上
     /// </summary>
     public virtual void SnapToGround() => SnapToGround(stats.current.snapForce);
