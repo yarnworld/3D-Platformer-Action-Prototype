@@ -302,7 +302,7 @@ public abstract class Entity<T>:EntityBase where T : Entity<T>
     // 进入地面状态（角色刚刚落地时调用）
     protected virtual void EnterGround(RaycastHit hit)
     {
-        Debug.Log("Entering ground state: " + hit.collider.name);
+
         // 只有当前不是地面状态时才执行（防止重复触发）
         if (!isGrounded)
         {

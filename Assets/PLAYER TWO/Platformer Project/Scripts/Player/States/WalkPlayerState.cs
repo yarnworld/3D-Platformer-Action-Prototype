@@ -33,7 +33,7 @@ public class WalkPlayerState : PlayerState
         // 冲刺处理
         player.Dash();
         // 空中旋转处理
-        //player.Spin();
+        player.Spin();
         // 获取玩家输入方向（相机方向）
         var inputDirection = player.inputs.GetMovementCameraDirection();
 

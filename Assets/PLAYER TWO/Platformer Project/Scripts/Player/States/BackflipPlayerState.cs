@@ -49,7 +49,7 @@ public class BackflipPlayerState : PlayerState
         // 如果还在空中，并且已经开始下落（y 方向速度小于 0）
         else if (player.verticalVelocity.y < 0)
         {
-            //player.Spin();        // 旋转攻击
+            player.Spin();        // 旋转攻击
             player.StompAttack(); // 踩踏攻击
             //player.AirDive();     // 空中下压攻击
             //player.Glide();       // 滑翔

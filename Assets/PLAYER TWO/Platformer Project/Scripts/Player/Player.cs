@@ -275,6 +275,26 @@ public class Player : Entity<Player>
             playerEvents.OnBackflip.Invoke();
         }
     }
+    /// <summary>
+    /// 执行旋转动作（Spin）
+    /// </summary>
+    public virtual void Spin()
+    {
+        // 空中旋转条件：允许空中旋转 && 未超过上限
+        var canAirSpin = (isGrounded || stats.current.canAirSpin) && airSpinCounter < stats.current.allowedAirSpins;
+
+        // 满足旋转条件 + 没有持物 + 按下旋转键
+        if (stats.current.canSpin && canAirSpin && !holding && inputs.GetSpinDown())
+        {
+            if (!isGrounded)
+            {
+                airSpinCounter++; // 空中旋转次数 +1
+            }
+
+            states.Change<SpinPlayerState>(); // 切换到旋转状态
+            playerEvents.OnSpin?.Invoke(); // 触发旋转事件
+        }
+    }
     // 让角色立即朝向某个方向（瞬间转向）
     public virtual void FaceDirection(Vector3 direction)
     {
