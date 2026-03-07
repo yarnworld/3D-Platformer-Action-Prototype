@@ -97,6 +97,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\CharacterStateBase.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\Obstacles\IObstacleMovementState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\BackflipPlayerState.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\LedgeHangingPlayerState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerEventListener.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerInputManager.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\PoleClimbingPlayerState.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\EntityStatsManager.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\SpinPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\MoveMovementState.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\LedgeClimbingPlayerState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\RailGrindPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\Obstacles\LadderObstacleState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerState.cs" />

@@ -476,4 +476,115 @@ public class Player : Entity<Player>
     /// 开始轨道滑行（Rail Grind）
     /// </summary>
     public virtual void StartGrind() => states.Change<RailGrindPlayerState>();
+
+    /// <summary>
+    /// 设置皮肤模型的父物体（比如挂在某个武器或挂点上）
+    /// </summary>
+    public virtual void SetSkinParent(Transform parent)
+    {
+        if (skin)
+        {
+            skin.parent = parent;
+        }
+    }
+
+    /// <summary>
+    /// 重置皮肤的父物体（回到玩家本体，恢复初始位置和旋转）
+    /// </summary>
+    public virtual void ResetSkinParent()
+    {
+        if (skin)
+        {
+            skin.parent = transform;
+            skin.localPosition = m_skinInitialPosition;
+            skin.localRotation = m_skinInitialRotation;
+        }
+    }
+    /// <summary>
+    /// 抓住悬崖（Ledge Grab）
+    /// </summary>
+    public virtual void LedgeGrab()
+    {
+        // 必须允许挂边，角色正在下落，没有拿东西，并且存在悬挂状态类
+        // 同时检测到悬崖
+        if (stats.current.canLedgeHang && velocity.y < 0 && !holding &&
+            states.ContainsStateOfType(typeof(LedgeHangingPlayerState)) &&
+            DetectingLedge(stats.current.ledgeMaxForwardDistance, stats.current.ledgeMaxDownwardDistance, out var hit))
+        {
+
+            // 排除球体和胶囊体碰撞体（避免挂到错误的物体）
+            if (!(hit.collider is CapsuleCollider) && !(hit.collider is SphereCollider))
+            {
+
+                // 计算角色挂到悬崖的位置
+                var ledgeDistance = radius + stats.current.ledgeMaxForwardDistance;
+                var lateralOffset = transform.forward * ledgeDistance;
+                var verticalOffset = Vector3.down * height * 0.5f - center;
+
+                velocity = Vector3.zero; // 停止角色运动
+                // 如果挂的是平台，角色会成为平台的子物体
+                transform.parent = hit.collider.CompareTag(GameTags.Platform) ? hit.transform : null;
+                // 定位角色到挂边位置
+                transform.position = hit.point - lateralOffset + verticalOffset;
+
+                // 切换状态到挂边
+                states.Change<LedgeHangingPlayerState>();
+                playerEvents.OnLedgeGrabbed?.Invoke();
+            }
+        }
+    }
+
+    /// <summary>
+    /// 检测角色前方是否有可挂的 ledge（悬崖/平台边缘）
+    /// </summary>
+    /// <param name="forwardDistance">向前检测的最大距离</param>
+    /// <param name="downwardDistance">向下检测的最大距离</param>
+    /// <param name="ledgeHit">如果检测成功，返回被击中的 ledge 的信息</param>
+    /// <returns>是否检测到 ledge</returns>
+    protected virtual bool DetectingLedge(float forwardDistance, float downwardDistance, out RaycastHit ledgeHit)
+    {
+
+        // Unity 内置的碰撞偏移量 + 自定义的位移修正
+        // 用于避免射线检测时因浮点误差导致的“卡进墙里”现象
+        var contactOffset = Physics.defaultContactOffset + positionDelta;
+        // 前方检测的最大长度（角色半径 + 额外向前探测的距离）
+        var ledgeMaxDistance = radius + forwardDistance;
+        // 从角色中心向上的偏移，代表“检测 ledge 的高度起点”
+        // = 半个角色高度 + 接触修正
+        var ledgeHeightOffset = height * 0.5f + contactOffset;
+        // 角色局部坐标系中的“上方向偏移”向量
+        // 表示从当前位置向上移动到“检测 ledge 顶部”的点
+        var upwardOffset = transform.up * ledgeHeightOffset;
+        // 角色局部坐标系中的“前方向偏移”向量
+        // 表示从当前位置向前探测 ledge 的距离
+        var forwardOffset = transform.forward * ledgeMaxDistance;
+
+        // ---------------- 前方/上方是否有阻挡的判断 ----------------
+        // 1. 从角色“上偏移点”往前打射线，检查前方是否有障碍
+        // 2. 从前方一点点（forwardOffset * 0.01f）往上打射线，检查上方是否有障碍
+        // 如果有阻挡，说明角色不能挂边
+        if (Physics.Raycast(position + upwardOffset, transform.forward, ledgeMaxDistance,
+                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore) ||
+            Physics.Raycast(position + forwardOffset * .01f, transform.up, ledgeHeightOffset,
+                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+        {
+            // 没检测到合适的 ledge，返回 false
+            ledgeHit = new RaycastHit();
+            return false;
+        }
+
+        // ---------------- 向下检测 ledge ----------------
+        // 起点 = 角色位置 + 上偏移 + 前偏移
+        //   即：角色头顶高度，往前探到 ledge 边缘外的位置
+        var origin = position + upwardOffset + forwardOffset;
+
+        // 向下检测的射线长度（下探深度 = downwardDistance + 接触修正）
+        var distance = downwardDistance + contactOffset;
+
+
+        // 从 origin 向下发射射线，判断是否击中可以挂的 ledge
+        // stats.current.ledgeHangingLayers 表示“允许挂边的层”
+        return Physics.Raycast(origin, Vector3.down, out ledgeHit, distance,
+            stats.current.ledgeHangingLayers, QueryTriggerInteraction.Ignore);
+    }
 }

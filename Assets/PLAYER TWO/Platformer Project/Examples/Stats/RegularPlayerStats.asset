@@ -92,7 +92,7 @@ MonoBehaviour:
   glidingGravity: 10
   glidingMaxFallSpeed: 2
   glidingTurningDrag: 8
-  canWallDrag: 1
+  canWallDrag: 0
   wallJumpLockMovement: 1
   wallDragLayers:
     serializedVersion: 2
@@ -124,7 +124,7 @@ MonoBehaviour:
   canLedgeHang: 1
   ledgeHangingLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 3585
   ledgeHangingSkinOffset: {x: 0, y: 0, z: 0}
   ledgeMaxForwardDistance: 0.25
   ledgeMaxDownwardDistance: 0.25
@@ -135,6 +135,6 @@ MonoBehaviour:
   canClimbLedges: 1
   ledgeClimbingLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 3585
   ledgeClimbingSkinOffset: {x: 0, y: 0, z: 0}
   ledgeClimbingDuration: 1

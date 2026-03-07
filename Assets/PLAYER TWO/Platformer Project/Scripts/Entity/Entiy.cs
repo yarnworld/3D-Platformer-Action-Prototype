@@ -494,7 +494,17 @@ public abstract class Entity<T>:EntityBase where T : Entity<T>
             ExitRail();
         }
     }
+    // 判断实体碰撞器是否能放入指定位置（是否与其他碰撞体重叠）
+    public virtual bool FitsIntoPosition(Vector3 position)
+    {
+        var radius = controller.radius - controller.skinWidth;
+        var offset = height * 0.5f - radius;
+        var top = position + Vector3.up * offset;
+        var bottom = position - Vector3.up * offset;
 
+        return !Physics.CheckCapsule(top, bottom, radius,
+            Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+    }
 
     // 进入轨道状态（通常是进入某种固定路径/轨道，例如滑轨、过山车）
     protected virtual void EnterRail(SplineContainer rails)

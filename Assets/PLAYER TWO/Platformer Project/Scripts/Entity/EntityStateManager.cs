@@ -135,6 +135,12 @@ public abstract class EntityStateManager<T>:EntityStateManager where T : Entity<
         events.onEnter?.Invoke(current.GetType());
     }
     /// <summary>
+    /// 判断状态管理器是否包含指定类型的状态。
+    /// </summary>
+    /// <param name="type">状态类型。</param>
+    /// <returns>如果包含返回 true，否则 false。</returns>
+    public virtual bool ContainsStateOfType(Type type) => m_states.ContainsKey(type);
+    /// <summary>
     /// 当实体与其他碰撞体接触时调用，将事件传递给当前状态。
     /// </summary>
     /// <param name="other">碰撞到的其他碰撞体。</param>

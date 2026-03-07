@@ -2397,19 +2397,20 @@ MonoBehaviour:
   - FallPlayerState
   - HurtPlayerState
   - HurtPlayerState
-  - HurtPlayerState
-  - HurtPlayerState
+  - WallDragPlayerState
+  - PoleClimbingPlayerState
   - SwimPlayerState
   - CrouchPlayerState
   - CrawlingPlayerState
   - SpinPlayerState
   - AirDivePlayerState
   - StompPlayerState
-  - HurtPlayerState
-  - HurtPlayerState
+  - LedgeHangingPlayerState
+  - LedgeClimbingPlayerState
   - BackflipPlayerState
-  - BackflipPlayerState
+  - GlidingPlayerState
   - DashPlayerState
+  - RailGrindPlayerState
 --- !u!114 &6457142456682978307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2525,7 +2526,7 @@ MonoBehaviour:
     OnDashEnded:
       m_PersistentCalls:
         m_Calls: []
-  skin: {fileID: 0}
+  skin: {fileID: 7674229840038231450}
 --- !u!114 &3586779895174574291
 MonoBehaviour:
   m_ObjectHideFlags: 0
