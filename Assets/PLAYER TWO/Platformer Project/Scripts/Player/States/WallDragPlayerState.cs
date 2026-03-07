@@ -15,8 +15,8 @@ public class WallDragPlayerState : PlayerState
     {
         // 重置跳跃、空中旋转、空中冲刺
         player.ResetJumps();
-        //player.ResetAirSpins();
-        //player.ResetAirDash();
+        player.ResetAirSpins();
+        player.ResetAirDash();
 
         // 清空当前速度
         player.velocity = Vector3.zero;

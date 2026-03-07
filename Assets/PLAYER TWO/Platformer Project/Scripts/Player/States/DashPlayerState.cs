@@ -68,6 +68,6 @@ public class DashPlayerState : PlayerState
     {
         //player.PushRigidbody(other);
         player.WallDrag(other);      // 墙面减速
-        //player.GrabPole(other);      // 抓杆
+        player.GrabPole(other);      // 抓杆
     }
 }

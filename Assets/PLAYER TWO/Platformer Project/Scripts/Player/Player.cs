@@ -456,4 +456,17 @@ public class Player : Entity<Player>
             }
         }
     }
+    /// <summary>
+    /// 抓取竿子（如果可以攀爬且条件满足）
+    /// </summary>
+    /// <param name="other">检测到的碰撞体</param>
+    public virtual void GrabPole(Collider other)
+    {
+        if (stats.current.canPoleClimb && velocity.y <= 0
+                                       && !holding && other.TryGetComponent(out Pole pole))
+        {
+            this.pole = pole;
+            states.Change<PoleClimbingPlayerState>(); // 切换到攀爬竿子状态
+        }
+    }
 }

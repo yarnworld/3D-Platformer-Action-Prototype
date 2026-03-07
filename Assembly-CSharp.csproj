@@ -99,6 +99,7 @@
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\BackflipPlayerState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerEventListener.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerInputManager.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\PoleClimbingPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\BonusSeeker.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\AirDivePlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstacleBase.cs" />
