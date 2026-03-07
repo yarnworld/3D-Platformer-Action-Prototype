@@ -90,7 +90,7 @@ public class Player : Entity<Player>
     public virtual void Accelerate(Vector3 direction)
     {
         // 根据是否按下 Run 键、是否在地面，决定不同的转向阻尼与加速度
-        // var turningDrag = isGrounded && inputs.GetRun() ? stats.current.runningTurningDrag : stats.current.turningDrag;
+        //var turningDrag = isGrounded && inputs.GetRun() ? stats.current.runningTurningDrag : stats.current.turningDrag;
         // var acceleration = isGrounded && inputs.GetRun() ? stats.current.runningAcceleration : stats.current.acceleration;
         // var finalAcceleration = isGrounded ? acceleration : stats.current.airAcceleration; // 空中与地面不同
         // var topSpeed = inputs.GetRun() ? stats.current.runningTopSpeed : stats.current.topSpeed;
@@ -164,7 +164,6 @@ public class Player : Entity<Player>
         // 是否可以地面冲刺（冷却结束）
         var canGroundDash = stats.current.canGroundDash && isGrounded &&
                             Time.time - lastDashTime > stats.current.groundDashCoolDown;
-        Debug.Log(inputs.GetDashDown());
         // 如果按下冲刺键，且符合条件
         if (inputs.GetDashDown() && (canAirDash || canGroundDash))
         {
@@ -290,6 +289,15 @@ public class Player : Entity<Player>
             states.Change<BackflipPlayerState>();
             playerEvents.OnBackflip.Invoke();
         }
+    }
+    /// <summary>
+    /// 滑翔（下落时减缓下落速度）
+    /// </summary>
+    public virtual void Glide()
+    {
+        if (!isGrounded && inputs.GetGlide() &&
+            verticalVelocity.y <= 0 && stats.current.canGlide)
+            states.Change<GlidingPlayerState>();
     }
     /// <summary>
     /// 执行旋转动作（Spin）

@@ -34,7 +34,7 @@ public class FallPlayerState : PlayerState
         player.Dash();                        // 空中冲刺
         player.AirDive();                     // 空中俯冲动作
         player.StompAttack();                 // 空中踩击攻击
-        //player.Glide();                       // 滑翔动作
+        player.Glide();                       // 滑翔动作
         //player.LedgeGrab();                   // 抓取悬挂
 
         // 如果落地 → 切换到 Idle 状态

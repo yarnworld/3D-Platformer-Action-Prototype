@@ -68,6 +68,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\Grummy.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\RotationScript.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstacleType.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\GlidingPlayerState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\playerEvents.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\WalkPlayerState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\Player.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\FallPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstacleGroup.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerStats.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Glider.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\SwimPlayerState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\StompPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\CharacterMovementStateBase.cs" />

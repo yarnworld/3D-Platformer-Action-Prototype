@@ -2399,11 +2399,11 @@ MonoBehaviour:
   - HurtPlayerState
   - HurtPlayerState
   - HurtPlayerState
-  - HurtPlayerState
+  - SwimPlayerState
   - CrouchPlayerState
   - CrawlingPlayerState
   - SpinPlayerState
-  - HurtPlayerState
+  - AirDivePlayerState
   - StompPlayerState
   - HurtPlayerState
   - HurtPlayerState
@@ -3698,6 +3698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3749565669628705137}
+  - component: {fileID: 849295786718391331}
   m_Layer: 0
   m_Name: Glider
   m_TagString: Untagged
@@ -3722,6 +3723,23 @@ Transform:
   - {fileID: 7754725362786864946}
   m_Father: {fileID: 7674229840038231450}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &849295786718391331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9223138182315322170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f091ff0453132ab418baeb57e604853a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  trails: []
+  scaleDuration: 0.7
+  openAudio: {fileID: 8300000, guid: 5731886b24a083d4b96f52451958df11, type: 3}
+  closeAudio: {fileID: 8300000, guid: c5c638c18ba02a04fa51ad14b3f318e3, type: 3}
 --- !u!1001 &842584420741695674
 PrefabInstance:
   m_ObjectHideFlags: 0
