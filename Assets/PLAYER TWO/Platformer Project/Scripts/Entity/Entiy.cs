@@ -177,7 +177,7 @@ public abstract class Entity<T>:EntityBase where T : Entity<T>
         {
             HandleStates();
             HandleController();
-            //HandleSpline();
+            HandleSpline();
             HandleGround();
             HandleContacts();
         }
@@ -454,6 +454,90 @@ public abstract class Entity<T>:EntityBase where T : Entity<T>
             }
         }
     }
+    // 初始化胶囊碰撞器（CapsuleCollider）
+    // 用于自定义的碰撞检测逻辑（比如 Overlap 检查），默认禁用
+    protected virtual void InitializeCollider()
+    {
+        // 动态添加 CapsuleCollider
+        m_collider = gameObject.AddComponent<CapsuleCollider>();
+
+        // 高度与 CharacterController 保持一致
+        m_collider.height = controller.height;
+
+        // 半径与 CharacterController 保持一致
+        m_collider.radius = controller.radius;
+
+        // 中心点与 CharacterController 保持一致
+        m_collider.center = controller.center;
+
+        // 设置为触发器（不产生物理碰撞，只检测）
+        m_collider.isTrigger = true;
+
+        // 默认禁用（只在需要的时候启用）
+        m_collider.enabled = false;
+    }
+    // 处理轨道（Spline）上的逻辑
+    protected virtual void HandleSpline()
+    {
+        var distance = (height * 0.5f) + height * 0.5f;
+
+        if (SphereCast(-transform.up, distance, out var hit) &&
+            hit.collider.CompareTag(GameTags.InteractiveRail))
+        {
+            if (!onRails && verticalVelocity.y <= 0)
+            {
+                EnterRail(hit.collider.GetComponent<SplineContainer>());
+            }
+        }
+        else
+        {
+            ExitRail();
+        }
+    }
 
 
+    // 进入轨道状态（通常是进入某种固定路径/轨道，例如滑轨、过山车）
+    protected virtual void EnterRail(SplineContainer rails)
+    {
+        // 只有当前不在轨道状态时才执行
+        if (!onRails)
+        {
+            // 标记角色进入轨道模式
+            onRails = true;
+            // 保存当前轨道数据引用
+            this.rails = rails;
+            // 触发“进入轨道”的事件（例如锁定角色移动方向）
+            entityEvents.OnRailsEnter.Invoke();
+        }
+    }
+
+    // 退出轨道状态
+    public virtual void ExitRail()
+    {
+        // 只有当前在轨道状态时才执行
+        if (onRails)
+        {
+            // 标记角色不在轨道模式
+            onRails = false;
+            // 触发“退出轨道”的事件（恢复自由移动）
+            entityEvents.OnRailsExit.Invoke();
+        }
+    }
+
+    // 启用或禁用自定义碰撞，禁用角色控制器，启用自定义碰撞组件
+    public virtual void UseCustomCollision(bool value)
+    {
+        controller.enabled = !value;
+
+        if (value)
+        {
+            InitializeCollider();
+            InitializeRigidbody();
+        }
+        else
+        {
+            Destroy(m_collider);
+            Destroy(m_rigidbody);
+        }
+    }
 }

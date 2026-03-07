@@ -30,7 +30,7 @@ MonoBehaviour:
   brakeThreshold: -0.8
   slopeUpwardForce: 25
   slopeDownwardForce: 28
-  multiJumps: 1
+  multiJumps: 2
   coyoteJumpThreshold: 0.15
   maxJumpHeight: 17
   minJumpHeight: 10

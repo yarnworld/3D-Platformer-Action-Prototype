@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Splines;
 
 public class Player : Entity<Player>
 {
@@ -57,6 +58,7 @@ public class Player : Entity<Player>
         InitializeStats();
         InitializeHealth();
         InitializeTag();
+        
         // 监听落地事件，重置跳跃/空中技能次数
         entityEvents.OnGroundEnter.AddListener(() =>
         {
@@ -70,7 +72,8 @@ public class Player : Entity<Player>
         {
             ResetJumps();
             ResetAirSpins();
-            //ResetAirDash();
+            ResetAirDash();
+            StartGrind();
         });
     }
 
@@ -226,7 +229,7 @@ public class Player : Entity<Player>
         var canCoyoteJump = (jumpCounter == 0) && (Time.time < lastGroundTime + stats.current.coyoteJumpThreshold);
 
         // 地面 / 轨道 / 多段跳 / 土狼跳条件满足时才允许跳跃
-        if ((isGrounded || canMultiJump || canCoyoteJump))
+        if ((isGrounded || canMultiJump || canCoyoteJump || onRails))
         {
             if (inputs.GetJumpDown()) // 按下跳跃键
             {
@@ -469,4 +472,8 @@ public class Player : Entity<Player>
             states.Change<PoleClimbingPlayerState>(); // 切换到攀爬竿子状态
         }
     }
+    /// <summary>
+    /// 开始轨道滑行（Rail Grind）
+    /// </summary>
+    public virtual void StartGrind() => states.Change<RailGrindPlayerState>();
 }
