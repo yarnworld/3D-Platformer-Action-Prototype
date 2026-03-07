@@ -81,7 +81,7 @@ public class AirDivePlayerState : PlayerState
     {
         if (!player.isGrounded)
         {
-            //player.WallDrag(other); // 碰到墙壁 → 可能进入墙壁滑行
+            player.WallDrag(other); // 碰到墙壁 → 可能进入墙壁滑行
             //player.GrabPole(other); // 碰到杆子 → 可能进入爬杆
         }
     }

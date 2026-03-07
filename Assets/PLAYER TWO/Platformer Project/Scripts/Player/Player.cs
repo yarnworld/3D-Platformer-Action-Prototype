@@ -300,6 +300,27 @@ public class Player : Entity<Player>
             states.Change<GlidingPlayerState>();
     }
     /// <summary>
+    /// 贴墙下滑（Wall Drag）
+    /// </summary>
+    public virtual void WallDrag(Collider other)
+    {
+        if (stats.current.canWallDrag && velocity.y <= 0 &&
+            !holding && !other.TryGetComponent<Rigidbody>(out _))
+        {
+            // 检测前方是否有可滑的墙体
+            if (CapsuleCast(transform.forward, 0.25f, out var hit,
+                    stats.current.wallDragLayers))
+            {
+                // 如果是平台，成为其子物体
+                if (hit.collider.CompareTag(GameTags.Platform))
+                    transform.parent = hit.transform;
+
+                lastWallNormal = hit.normal; // 记录墙面法线
+                states.Change<WallDragPlayerState>();
+            }
+        }
+    }
+    /// <summary>
     /// 执行旋转动作（Spin）
     /// </summary>
     public virtual void Spin()

@@ -179,9 +179,10 @@ public abstract class Entity<T>:EntityBase where T : Entity<T>
             HandleController();
             //HandleSpline();
             HandleGround();
-            //HandleContacts();
+            HandleContacts();
         }
     }
+
     // 初始化角色控制器组件（CharacterController）
     // 负责角色的基本移动、碰撞等物理交互
     protected virtual void InitializeController()
@@ -290,7 +291,14 @@ public abstract class Entity<T>:EntityBase where T : Entity<T>
         m_rigidbody.isKinematic = true;
     }
 
-
+    // 处理接触事件
+    protected virtual void OnContact(Collider other)
+    {
+        if (other)
+        {
+            states.OnContact(other);
+        }
+    }
     #region 地面检测与处理
     // 评估是否符合着陆条件
     protected virtual bool EvaluateLanding(RaycastHit hit)
@@ -413,7 +421,39 @@ public abstract class Entity<T>:EntityBase where T : Entity<T>
     }
     // 处理状态机的步进逻辑
     protected virtual void HandleStates() => states.Step();
+    // 检测与其他物体的接触（碰撞触发）
+    protected virtual void HandleContacts()
+    {
+        // 检测与其他实体的重叠，并把结果存入 m_contactBuffer
+        var overlaps = OverlapEntity(m_contactBuffer);
 
+        // 遍历所有重叠碰撞体
+        for (int i = 0; i < overlaps; i++)
+        {
+            // 排除触发器碰撞体和自身碰撞体
+            if (!m_contactBuffer[i].isTrigger && m_contactBuffer[i].transform != transform)
+            {
+                // 调用本对象的接触回调
+                OnContact(m_contactBuffer[i]);
+
+                // 获取该物体上所有实现 IEntityContact 接口的组件
+                var listeners = m_contactBuffer[i].GetComponents<IEntityContact>();
+
+                // 依次调用对方的接触回调（实现双向交互）
+                foreach (var contact in listeners)
+                {
+                    contact.OnEntityContact((T)this);
+                }
+
+                // 如果接触物体的底部高于角色的顶部（即碰到头顶的物体）
+                if (m_contactBuffer[i].bounds.min.y > controller.bounds.max.y)
+                {
+                    // 限制向上的垂直速度（防止继续向上穿透）
+                    verticalVelocity = Vector3.Min(verticalVelocity, Vector3.zero);
+                }
+            }
+        }
+    }
 
 
 }

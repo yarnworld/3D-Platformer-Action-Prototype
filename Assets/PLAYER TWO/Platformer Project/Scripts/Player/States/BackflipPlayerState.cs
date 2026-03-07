@@ -63,10 +63,10 @@ public class BackflipPlayerState : PlayerState
     {
         //player.PushRigidbody(other);
         //// 允许在墙面进行摩擦滑落
-        //player.WallDrag(other);
+        player.WallDrag(other);
         //// 允许抓住杆子（类似马里奥64里的抓杆机制）
         //player.GrabPole(other);
     }
 
-   
+
 }

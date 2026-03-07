@@ -54,7 +54,7 @@ public class FallPlayerState : PlayerState
     public override void OnContact(Player player, Collider other)
     {
         //player.PushRigidbody(other);
-        //player.WallDrag(other);       // 墙面摩擦减速
+        player.WallDrag(other);       // 墙面摩擦减速
         //player.GrabPole(other);       // 抓住杆或绳索
     }
 }

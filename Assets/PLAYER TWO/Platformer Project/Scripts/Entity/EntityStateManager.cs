@@ -134,4 +134,15 @@ public abstract class EntityStateManager<T>:EntityStateManager where T : Entity<
         // 触发新状态进入事件
         events.onEnter?.Invoke(current.GetType());
     }
+    /// <summary>
+    /// 当实体与其他碰撞体接触时调用，将事件传递给当前状态。
+    /// </summary>
+    /// <param name="other">碰撞到的其他碰撞体。</param>
+    public virtual void OnContact(Collider other)
+    {
+        if (current != null && Time.timeScale > 0)
+        {
+            current.OnContact(entity, other);
+        }
+    }
 }

@@ -67,7 +67,7 @@ public class DashPlayerState : PlayerState
     public override void OnContact(Player player, Collider other)
     {
         //player.PushRigidbody(other);
-        //player.WallDrag(other);      // 墙面减速
+        player.WallDrag(other);      // 墙面减速
         //player.GrabPole(other);      // 抓杆
     }
 }
