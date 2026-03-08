@@ -87,6 +87,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\PatrolByPointsCharacterState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Singleton.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\CrawlingPlayerState.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Star.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\OscillateScale.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Hazard.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CandyKing.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\JumpMovementState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerAnimator.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\CandyKingBehavior.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Rotaror.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\EntityState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\ObstacleOvercomeCharacterState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\Door\DoorComponent.cs" />
@@ -113,6 +115,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\BonusSeeker.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\AirDivePlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstacleBase.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerCotroller.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\RotateMovementState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Breakable.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstaclePath.cs" />
@@ -133,6 +136,7 @@
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Pole.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Manager\CharacterManager.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\MoveToNavMeshMovementState.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Floater.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\CrouchPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\IdleMovementState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\EntityEvents.cs" />

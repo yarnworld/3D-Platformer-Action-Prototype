@@ -156,7 +156,7 @@ public class Collectable : MonoBehaviour
         {
             m_audio.Stop();
             m_audio.PlayOneShot(clip);
-            onCollect.Invoke(player);
+            onCollect.Invoke(player);//事件参数定位玩家
             yield return new WaitForSeconds(0.1f);
         }
     }
