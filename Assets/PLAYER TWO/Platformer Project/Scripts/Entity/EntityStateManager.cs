@@ -9,6 +9,7 @@ public  abstract class EntityStateManager : MonoBehaviour
     /// 具体定义在 EntityStateManagerEvents 中。
     /// </summary>
     public EntityStateManagerEvents events;
+
 }
 
 public abstract class EntityStateManager<T>:EntityStateManager where T : Entity<T>
@@ -140,6 +141,20 @@ public abstract class EntityStateManager<T>:EntityStateManager where T : Entity<
     /// <param name="type">状态类型。</param>
     /// <returns>如果包含返回 true，否则 false。</returns>
     public virtual bool ContainsStateOfType(Type type) => m_states.ContainsKey(type);
+    /// <summary>
+    /// 判断当前状态是否为指定类型。
+    /// </summary>
+    /// <param name="type">需要比较的状态类型。</param>
+    /// <returns>如果当前状态类型等于参数类型返回 true，否则返回 false。</returns>
+    public virtual bool IsCurrentOfType(Type type)
+    {
+        if (current == null)
+        {
+            return false;
+        }
+
+        return current.GetType() == type;
+    }
     /// <summary>
     /// 当实体与其他碰撞体接触时调用，将事件传递给当前状态。
     /// </summary>

@@ -71,6 +71,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\ObstacleType.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\GlidingPlayerState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\playerEvents.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerFootsteps.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\WalkPlayerState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\Player.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Tools\ClassTypeName.cs" />
