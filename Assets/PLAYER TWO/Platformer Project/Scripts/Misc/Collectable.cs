@@ -87,7 +87,7 @@ public class Collectable : MonoBehaviour
     // 初始化显示状态
     protected virtual void InitializeDisplay()
     {
-        display.SetActive(!hidden);
+        display?.SetActive(!hidden);
     }
 
     // 初始化速度（可随机方向）

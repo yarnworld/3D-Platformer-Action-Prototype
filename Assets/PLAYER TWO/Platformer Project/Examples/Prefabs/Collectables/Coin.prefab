@@ -75,7 +75,7 @@ MonoBehaviour:
   display: {fileID: 72184741249350940}
   clip: {fileID: 8300000, guid: ab5056e86d89a9b49af0adccd84af617, type: 3}
   particle: {fileID: 6940178250071472060}
-  hidden: 0
+  hidden: 1
   quickShowHeight: 2
   quickShowDuration: 0.25
   hideDuration: 0.5

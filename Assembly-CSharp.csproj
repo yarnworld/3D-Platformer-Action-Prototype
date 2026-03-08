@@ -101,6 +101,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\Door\DoorComponent.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\Obstacles\JumpObstacleState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\OscillatePosition.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\ItemBox.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\CharacterStateBase.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\Obstacles\IObstacleMovementState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\BackflipPlayerState.cs" />
