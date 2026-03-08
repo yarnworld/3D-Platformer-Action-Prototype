@@ -165,11 +165,7 @@ public class LedgeHangingPlayerState : PlayerState
 
 
             // ---------- 输入处理：释放 / 跳跃 / 翻越 ----------
-            //检查翻越的各个条件
-            Debug.Log("inputDirection.z > 0: " + (inputDirection.z > 0)); // 检查 z 轴输入是否大于 0
-            Debug.Log("player.stats.current.canClimbLedges: " + player.stats.current.canClimbLedges); // 检查是否允许攀爬
-            Debug.Log("((1 << topHit.collider.gameObject.layer) & player.stats.current.ledgeClimbingLayers) != 0: " + (((1 << topHit.collider.gameObject.layer) & player.stats.current.ledgeClimbingLayers) != 0)); // 检查平台所属层是否在可攀爬层集合中
-            Debug.Log("player.FitsIntoPosition(climbDestination): " + player.FitsIntoPosition(climbDestination)); // 检查目标落点是否能容纳玩家体积
+
             // 1) 释放悬挂（向下）：玩家主动松手，切回下落
             if (player.inputs.GetReleaseLedgeDown())
             {
