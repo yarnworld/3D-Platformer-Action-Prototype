@@ -93,15 +93,12 @@ public class Player : Entity<Player>
     public virtual void Accelerate(Vector3 direction)
     {
         // 根据是否按下 Run 键、是否在地面，决定不同的转向阻尼与加速度
-        //var turningDrag = isGrounded && inputs.GetRun() ? stats.current.runningTurningDrag : stats.current.turningDrag;
-        // var acceleration = isGrounded && inputs.GetRun() ? stats.current.runningAcceleration : stats.current.acceleration;
-        // var finalAcceleration = isGrounded ? acceleration : stats.current.airAcceleration; // 空中与地面不同
-        // var topSpeed = inputs.GetRun() ? stats.current.runningTopSpeed : stats.current.topSpeed;
+        var turningDrag = isGrounded && inputs.GetRun() ? stats.current.runningTurningDrag : stats.current.turningDrag;
+        var acceleration = isGrounded && inputs.GetRun() ? stats.current.runningAcceleration : stats.current.acceleration;
+        var finalAcceleration = isGrounded ? acceleration : stats.current.airAcceleration; // 空中与地面不同
+        var topSpeed = inputs.GetRun() ? stats.current.runningTopSpeed : stats.current.topSpeed;
 
-        var turningDrag = stats.current.turningDrag;
-        var acceleration = stats.current.acceleration;
-        var finalAcceleration = acceleration;
-        var topSpeed = stats.current.topSpeed;
+
 
         // 调用底层 Accelerate(方向, 转向阻尼, 加速度, 最大速度)
         Accelerate(direction, turningDrag, finalAcceleration, topSpeed);
@@ -498,6 +495,21 @@ public class Player : Entity<Player>
             skin.parent = transform;
             skin.localPosition = m_skinInitialPosition;
             skin.localRotation = m_skinInitialRotation;
+        }
+    }
+    /// <summary>
+    /// 推动刚体（例如推动箱子）
+    /// </summary>
+    public virtual void PushRigidbody(Collider other)
+    {
+        // 排除台阶上方的情况，检测目标是否是刚体
+        if (!IsPointUnderStep(other.bounds.max) &&
+            other.TryGetComponent(out Rigidbody rigidbody))
+        {
+            // 推动力量与玩家的水平速度相关
+            var force = lateralVelocity * stats.current.pushForce;
+            // 模拟物理推力（除以质量，乘上deltaTime）
+            rigidbody.velocity += force / rigidbody.mass * Time.deltaTime;
         }
     }
     /// <summary>

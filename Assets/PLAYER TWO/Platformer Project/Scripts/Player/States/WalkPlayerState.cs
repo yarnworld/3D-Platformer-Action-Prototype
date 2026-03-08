@@ -74,7 +74,10 @@ public class WalkPlayerState : PlayerState
 
     /// <summary>
     /// 碰撞检测逻辑
-    /// - 空闲状态通常不需要额外碰撞处理
+    /// - walk时对刚体进行推动
     /// </summary>
-    public override void OnContact(Player player, Collider other) { }
+    public override void OnContact(Player player, Collider other)
+    {
+        player.PushRigidbody(other);
+    }
 }

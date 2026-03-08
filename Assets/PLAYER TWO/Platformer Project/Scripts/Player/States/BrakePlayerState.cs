@@ -38,5 +38,8 @@ public class BrakePlayerState : PlayerState
     /// <summary>
     /// 当处于刹车状态下发生碰撞时调用（此处无逻辑）
     /// </summary>
-    public override void OnContact(Player player, Collider other) { }
+    public override void OnContact(Player player, Collider other) 
+    {
+        player.PushRigidbody(other);
+    }
 }

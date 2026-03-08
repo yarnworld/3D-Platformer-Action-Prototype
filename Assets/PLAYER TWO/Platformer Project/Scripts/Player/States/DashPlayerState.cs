@@ -66,7 +66,7 @@ public class DashPlayerState : PlayerState
     /// </summary>
     public override void OnContact(Player player, Collider other)
     {
-        //player.PushRigidbody(other);
+        player.PushRigidbody(other);
         player.WallDrag(other);      // Ç½Ãæ¼õËÙ
         player.GrabPole(other);      // ×¥¸Ë
     }

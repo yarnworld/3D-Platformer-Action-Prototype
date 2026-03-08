@@ -90,6 +90,6 @@ public class SwimPlayerState : PlayerState
     /// </summary>
     public override void OnContact(Player player, Collider other)
     {
-        //player.PushRigidbody(other);
+        player.PushRigidbody(other);
     }
 }

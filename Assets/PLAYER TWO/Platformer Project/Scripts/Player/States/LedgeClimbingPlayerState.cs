@@ -21,7 +21,7 @@ public class LedgeClimbingPlayerState : PlayerState
     {
         m_routine = SetPositionRoutine(player);  // 创建协程
         player.StartCoroutine(m_routine);        // 启动协程
-        Debug.Log("Enter climb");
+
     }
 
     /// <summary>

@@ -61,7 +61,7 @@ public class BackflipPlayerState : PlayerState
     /// </summary>
     public override void OnContact(Player player, Collider other)
     {
-        //player.PushRigidbody(other);
+        player.PushRigidbody(other);
         //// 允许在墙面进行摩擦滑落
         player.WallDrag(other);
         //// 允许抓住杆子（类似马里奥64里的抓杆机制）
