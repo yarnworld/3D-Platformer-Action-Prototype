@@ -178,6 +178,13 @@ public class PlayerStats : EntityStats<PlayerStats>
     public float ledgeSideHeightOffset = 0.15f;   // 侧边高度偏移
     public float ledgeSideCollisionRadius = 0.25f;// 侧边检测半径
     public float ledgeMovementSpeed = 1.5f;       // 悬挂时移动速度
+                                                  //==============================【拾取与投掷】==============================//
+    [Header("Pick'n Throw Stats")]
+    public bool canPickUp = true;          // 是否允许拾取物体
+    public bool canPickUpOnAir = false;    // 是否可以在空中拾取
+    public bool canJumpWhileHolding = true;// 拿着物体时是否可以跳跃
+    public float pickDistance = 0.5f;      // 拾取判定距离
+    public float throwVelocityMultiplier = 1.5f; // 投掷时的速度倍率
 
     //==============================【攀爬边缘】==============================//
     [Header("Ledge Climbing Stats")]

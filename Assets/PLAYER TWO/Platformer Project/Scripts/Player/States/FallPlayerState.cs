@@ -31,6 +31,7 @@ public class FallPlayerState : PlayerState
         player.AccelerateToInputDirection();  // 根据玩家输入方向加速
         player.Jump();                        // 空中可跳跃
         player.Spin();                        // 空中旋转动作
+        player.PickAndThrow();                // 空中拾取或投掷物体
         player.Dash();                        // 空中冲刺
         player.AirDive();                     // 空中俯冲动作
         player.StompAttack();                 // 空中踩击攻击

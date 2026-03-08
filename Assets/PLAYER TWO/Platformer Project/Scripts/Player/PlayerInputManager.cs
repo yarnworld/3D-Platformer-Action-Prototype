@@ -24,6 +24,7 @@ public class PlayerInputManager : MonoBehaviour
     protected InputAction m_releaseLedge;
     protected InputAction m_pause;
     protected InputAction m_run;
+    protected InputAction m_pickAndDrop;
 
     // 主摄像机引用，用于计算相对移动方向
     protected Camera m_camera;
@@ -68,6 +69,7 @@ public class PlayerInputManager : MonoBehaviour
         m_releaseLedge = actions["ReleaseLedge"];
         m_pause = actions["Pause"];
         m_run = actions["Run"];
+        m_pickAndDrop = actions["PickAndDrop"];
     }
     /// <summary>
     /// 获取观察方向输入（鼠标时直接返回，手柄时使用死区修正）
@@ -188,4 +190,5 @@ public class PlayerInputManager : MonoBehaviour
     // 以下是输入状态的快捷访问方法
     public virtual bool GetRun() => m_run.IsPressed();
     public virtual bool GetRunUp() => m_run.WasReleasedThisFrame();
+    public virtual bool GetPickAndDropDown() => m_pickAndDrop.WasPressedThisFrame();
 }

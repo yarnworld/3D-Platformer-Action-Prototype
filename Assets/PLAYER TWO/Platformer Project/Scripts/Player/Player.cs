@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
+using UnityEngine.UIElements;
 
 public class Player : Entity<Player>
 {
@@ -38,6 +39,9 @@ public class Player : Entity<Player>
 
     /// <summary> 玩家是否正在持有物品 </summary>
     public bool holding { get; protected set; }
+    /// <summary> 玩家当前持有的可拾取物体实例 </summary>
+    public Pickable pickable { get; protected set; }
+    public Transform pickableSlot;     // 玩家手持物品的挂点（物品显示在这里）
 
     /// <summary> 玩家当前攀爬的 Pole（竿子/杆子） </summary>
     public Pole pole { get; protected set; }
@@ -598,5 +602,76 @@ public class Player : Entity<Player>
         // stats.current.ledgeHangingLayers 表示“允许挂边的层”
         return Physics.Raycast(origin, Vector3.down, out ledgeHit, distance,
             stats.current.ledgeHangingLayers, QueryTriggerInteraction.Ignore);
+    }
+
+    /// <summary>
+    /// 拾取或投掷物体（根据当前状态决定是拾取还是丢出）
+    /// </summary>
+    public virtual void PickAndThrow()
+    {
+        // 玩家当前允许拾取并且输入了“拾取/放下”按键
+        if (stats.current.canPickUp && inputs.GetPickAndDropDown())
+        {
+            if (!holding) // 如果当前没有拿着东西
+            {
+                // 在角色前方做一个 CapsuleCast（胶囊体检测），看是否有可拾取物
+                if (CapsuleCast(transform.forward,
+                        stats.current.pickDistance, out var hit))
+                {
+                    // 如果检测到的物体有 Pickable 组件，则执行拾取
+                    if (hit.transform.TryGetComponent(out Pickable pickable))
+                    {
+                        PickUp(pickable);
+                    }
+                }
+            }
+            else // 如果当前正在拿着物品，则执行投掷
+            {
+                Throw();
+            }
+        }
+    }
+
+    /// <summary>
+    /// 拾取物品逻辑
+    /// </summary>
+    public virtual void PickUp(Pickable pickable)
+    {
+        // 必须没有拿东西，并且玩家在地面上或允许空中拾取
+        if (!holding && (isGrounded || stats.current.canPickUpOnAir))
+        {
+            holding = true; // 标记正在持有物品
+            this.pickable = pickable; // 记录被拾取的物品
+            pickable.PickUp(pickableSlot); // 把物品附着到拾取点（手、头顶等）
+            pickable.onRespawn.AddListener(RemovePickable); // 监听物品的重生事件，如果物品重生就清除引用
+            playerEvents.OnPickUp?.Invoke(); // 触发拾取事件
+        }
+    }
+    /// <summary>
+    /// 移除手中持有的物品（例如物品消失或重生时）
+    /// </summary>
+    public virtual void RemovePickable()
+    {
+        if (holding)
+        {
+            pickable = null;
+            holding = false;
+        }
+    }
+
+    /// <summary>
+    /// 投掷物品逻辑
+    /// </summary>
+    public virtual void Throw()
+    {
+        if (holding)
+        {
+            // 投掷力与玩家的水平移动速度相关
+            var force = lateralVelocity.magnitude * stats.current.throwVelocityMultiplier;
+            pickable.Release(transform.forward, force); // 按角色前方向丢出
+            pickable = null; // 清除物品引用
+            holding = false; // 置空持有状态
+            playerEvents.OnThrow?.Invoke(); // 触发投掷事件
+        }
     }
 }

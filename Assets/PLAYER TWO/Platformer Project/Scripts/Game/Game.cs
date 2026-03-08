@@ -11,6 +11,31 @@ using UnityEngine.Events;
 [AddComponentMenu("PLAYER TWO/Platformer Project/Game/Game")]
 public class Game : Singleton<Game>
 {
+
+    /// <summary>
+    /// 当重试次数改变时触发，带有当前重试次数参数。
+    /// </summary>
+    public UnityEvent<int> OnRetriesSet;
+
+    /// <summary>
+    /// 当前剩余的重试次数，封装字段。
+    /// </summary>
+    protected int m_retries;
+
+    /// <summary>
+    /// 当前游戏剩余的重试次数属性，设置时会触发 OnRetriesSet 事件。
+    /// </summary>
+    public int retries
+    {
+        get { return m_retries; }
+        set
+        {
+            m_retries = value;
+            // 通知监听者重试次数已改变
+            OnRetriesSet?.Invoke(m_retries);
+        }
+    }
+
     /// <summary>
     /// 设置鼠标指针的锁定和显示状态。
     /// 仅在 Standalone 和 WebGL 平台生效。

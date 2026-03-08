@@ -27,6 +27,7 @@ public class IdlePlayerState : PlayerState
         player.Jump();                  // 允许跳跃
         player.Fall();                  // 检测下落
         player.Spin();                  // 检测旋转动作
+        player.PickAndThrow();          // 检测拾取/投掷
         //根据输入要知道往那边走
         // 获取玩家输入方向
         var inputDirection = player.inputs.GetMovementDirection();
