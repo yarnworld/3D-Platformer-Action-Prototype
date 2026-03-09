@@ -57,6 +57,9 @@ public class Player : Entity<Player>
 
     /// <summary> 玩家是否存活（血量大于 0） </summary>
     public virtual bool isAlive => !health.isEmpty;
+    // 重生点位置与旋转
+    protected Vector3 m_respawnPosition;
+    protected Quaternion m_respawnRotation;
     protected override void Awake()
     {
         base.Awake();
@@ -675,5 +678,23 @@ public class Player : Entity<Player>
             holding = false; // 置空持有状态
             playerEvents.OnThrow?.Invoke(); // 触发投掷事件
         }
+    }
+    /// <summary>
+    /// 玩家复活：重置生命值、位置、旋转，并切换到 Idle 状态
+    /// </summary>
+    public virtual void Respawn()
+    {
+        health.Reset();   // 重置生命
+        transform.SetPositionAndRotation(m_respawnPosition, m_respawnRotation); // 回到重生点
+        states.Change<IdlePlayerState>(); // 状态机切换为待机
+    }
+
+    /// <summary>
+    /// 设置下次重生的位置与旋转
+    /// </summary>
+    public virtual void SetRespawn(Vector3 position, Quaternion rotation)
+    {
+        m_respawnPosition = position;
+        m_respawnRotation = rotation;
     }
 }

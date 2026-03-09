@@ -74,6 +74,7 @@ public abstract class EntityBase : MonoBehaviour
 
     // 受到伤害（空实现，子类重写）
     public virtual void ApplyDamage(int damage, Vector3 origin) { }
+    protected virtual void OnUpdate() { }
     // 判断实体是否在斜坡上
     public virtual bool OnSlopingGround()
     {
