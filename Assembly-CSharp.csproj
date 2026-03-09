@@ -132,6 +132,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterBase.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\KingsGrummy.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\HelloCharacterState.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Flash.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\IdleCharacterState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Player\EditorLikeCameraController.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Obstacle\JumpObstacle.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\MoveToNavMeshMovementState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Floater.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\CrouchPlayerState.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Portal.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\IdleMovementState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\EntityEvents.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Game\GameCotroller.cs" />
