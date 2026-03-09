@@ -6,6 +6,15 @@ using UnityEngine.UIElements;
 
 public abstract class EntityBase : MonoBehaviour 
 {
+    public float accelerationMultiplier { get; set; } = 1f; // 加速度倍率
+
+    public float gravityMultiplier { get; set; } = 1f; // 重力倍率
+
+    public float topSpeedMultiplier { get; set; } = 1f; // 最高速度倍率
+
+    public float turningDragMultiplier { get; set; } = 1f; // 转向阻力倍率
+
+    public float decelerationMultiplier { get; set; } = 1f; // 减速度倍率
     protected Collider[] m_contactBuffer = new Collider[10];    // 碰撞检测缓冲区，用于存储接触的碰撞体
     public EntityEvents entityEvents;
     // 忽略碰撞器缩放的实体位置
@@ -155,15 +164,6 @@ public abstract class Entity<T>:EntityBase where T : Entity<T>
 {
     public EntityStateManager<T> states {  get; protected set; }
 
-    public float accelerationMultiplier { get; set; } = 1f;       // 加速度倍率
-
-    public float gravityMultiplier { get; set; } = 1f;            // 重力倍率
-
-    public float topSpeedMultiplier { get; set; } = 1f;           // 最高速度倍率
-
-    public float turningDragMultiplier { get; set; } = 1f;        // 转向阻力倍率
-
-    public float decelerationMultiplier { get; set; } = 1f;       // 减速度倍率
 
 
     protected virtual void Awake()

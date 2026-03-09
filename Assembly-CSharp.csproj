@@ -99,6 +99,7 @@
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Buoyancy.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerAnimator.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterStates\CandyKingBehavior.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\EntityVolumeEffector.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\Rotaror.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Entity\EntityState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Enemy\Enemy.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\LedgeClimbingPlayerState.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\States\RailGrindPlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\MovementStates\Obstacles\LadderObstacleState.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Misc\GravityField.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerState.cs" />
     <Compile Include="Assets\ithappy\Sweet_Land\Scripts\Demonstration\Character\CharacterComponents\Movement\Movement.cs" />
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Player\PlayerCamera.cs" />
