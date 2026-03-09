@@ -55,6 +55,8 @@ public class Player : Entity<Player>
     /// <summary> 玩家当前所在的水域碰撞体 </summary>
     public Collider water { get; protected set; }
 
+    /// <summary> 玩家是否存活（血量大于 0） </summary>
+    public virtual bool isAlive => !health.isEmpty;
     protected override void Awake()
     {
         base.Awake();
