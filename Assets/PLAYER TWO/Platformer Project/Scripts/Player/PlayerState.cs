@@ -1,4 +1,4 @@
-public abstract class PlayerState:EntityState<Player>
+namespace PLAYERTWO.PlatformerProject
 {
-
+	public abstract class PlayerState : EntityState<Player> { }
 }

@@ -435,6 +435,7 @@ GameObject:
   - component: {fileID: 6388800472053949404}
   - component: {fileID: 3651214293318140833}
   - component: {fileID: 6029874045758175187}
+  - component: {fileID: 6563653613857305753}
   m_Layer: 0
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -505,6 +506,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 1
   m_VerticalFit: 1
+--- !u!114 &6563653613857305753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2474550456037771558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57464d1ae9ee3da4fa730a52395ed786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2655984307177359181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,7 +1130,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6563653613857305753}
         m_TargetAssemblyTypeName: PLAYERTWO.PlatformerProject.LevelController, Assembly-CSharp
         m_MethodName: Pause
         m_Mode: 6

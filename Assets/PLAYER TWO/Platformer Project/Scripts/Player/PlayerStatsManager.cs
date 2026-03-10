@@ -1,5 +1,7 @@
+using UnityEngine;
 
-public class PlayerStatsManager : EntityStatsManager<PlayerStats>
+namespace PLAYERTWO.PlatformerProject
 {
-
+	[AddComponentMenu("PLAYER TWO/Platformer Project/Player/Player Stats Manager")]
+	public class PlayerStatsManager : EntityStatsManager<PlayerStats> { }
 }

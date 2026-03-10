@@ -1,289 +1,300 @@
 using System.Collections;
 using UnityEngine;
 
-// ÒªÇó´ËÎïÌå±ØĞëÓĞ Collider ×é¼ş
-[RequireComponent(typeof(Collider))]
-// ÔÚ Unity µÄ AddComponent ²Ëµ¥ÖĞÏÔÊ¾Â·¾¶
-[AddComponentMenu("PLAYER TWO/Platformer Project/Misc/Collectable")]
-public class Collectable : MonoBehaviour
+namespace PLAYERTWO.PlatformerProject
 {
-    [Header("General Settings")] // ³£¹æÉèÖÃ
-    public bool collectOnContact = true;   // ÊÇ·ñÅöµ½Íæ¼Ò¾ÍÖ±½ÓÊÕ¼¯
-    public int times = 1;                  // ÊÕ¼¯Ê±µ÷ÓÃ´ÎÊı£¨¿ÉÒÔ¶à´Î´¥·¢½±Àø/Ğ§¹û£©
-    public float ghostingDuration = 0.5f;  // ¡°ÓÄÁéÊ±¼ä¡±£¬¸ÕÉú³ÉÊ±¶ÌÔİ²»¿ÉÊÕ¼¯
-    public GameObject display;             // ÓÃÓÚÕ¹Ê¾µÄÄ£ĞÍ/ÎïÌå
-    public AudioClip clip;                 // ÊÕ¼¯ÒôĞ§
-    public ParticleSystem particle;        // ÊÕ¼¯Ê±²¥·ÅµÄÁ£×ÓĞ§¹û
+	// è¦æ±‚æ­¤ç‰©ä½“å¿…é¡»æœ‰ Collider ç»„ä»¶
+	[RequireComponent(typeof(Collider))]
+	// åœ¨ Unity çš„ AddComponent èœå•ä¸­æ˜¾ç¤ºè·¯å¾„
+	[AddComponentMenu("PLAYER TWO/Platformer Project/Misc/Collectable")]
+	public class Collectable : MonoBehaviour
+	{
+		[Header("General Settings")] // å¸¸è§„è®¾ç½®
+		public bool collectOnContact = true;   // æ˜¯å¦ç¢°åˆ°ç©å®¶å°±ç›´æ¥æ”¶é›†
+		public int times = 1;                  // æ”¶é›†æ—¶è°ƒç”¨æ¬¡æ•°ï¼ˆå¯ä»¥å¤šæ¬¡è§¦å‘å¥–åŠ±/æ•ˆæœï¼‰
+		public float ghostingDuration = 0.5f;  // â€œå¹½çµæ—¶é—´â€ï¼Œåˆšç”Ÿæˆæ—¶çŸ­æš‚ä¸å¯æ”¶é›†
+		public GameObject display;             // ç”¨äºå±•ç¤ºçš„æ¨¡å‹/ç‰©ä½“
+		public AudioClip clip;                 // æ”¶é›†éŸ³æ•ˆ
+		public ParticleSystem particle;        // æ”¶é›†æ—¶æ’­æ”¾çš„ç²’å­æ•ˆæœ
 
-    [Header("Visibility Settings")] // ¿É¼ûĞÔÉèÖÃ
-    public bool hidden;                    // ÊÇ·ñ³õÊ¼Òş²Ø£¨ÊÕ¼¯Ê±²ÅÏÔÊ¾£©
-    public float quickShowHeight = 2f;     // Òş²ØÎïÌå±»Õ¹Ê¾Ê±µÄÉÏÉı¸ß¶È
-    public float quickShowDuration = 0.25f;// ÉÏÉı¹ı³Ì³ÖĞøÊ±¼ä
-    public float hideDuration = 0.5f;      // Õ¹Ê¾ºóÔÙÒş²ØµÄµÈ´ıÊ±¼ä
+		[Header("Visibility Settings")] // å¯è§æ€§è®¾ç½®
+		public bool hidden;                    // æ˜¯å¦åˆå§‹éšè—ï¼ˆæ”¶é›†æ—¶æ‰æ˜¾ç¤ºï¼‰
+		public float quickShowHeight = 2f;     // éšè—ç‰©ä½“è¢«å±•ç¤ºæ—¶çš„ä¸Šå‡é«˜åº¦
+		public float quickShowDuration = 0.25f;// ä¸Šå‡è¿‡ç¨‹æŒç»­æ—¶é—´
+		public float hideDuration = 0.5f;      // å±•ç¤ºåå†éšè—çš„ç­‰å¾…æ—¶é—´
 
-    [Header("Life Time")] // ÉúÃüÖÜÆÚ
-    public bool hasLifeTime;               // ÊÇ·ñÓĞ´æ»îÊ±¼ä
-    public float lifeTimeDuration = 5f;    // ´æ»îÊ±¼ä£¨³¬¹ıºó×Ô¶¯ÏûÊ§£©
+		[Header("Life Time")] // ç”Ÿå‘½å‘¨æœŸ
+		public bool hasLifeTime;               // æ˜¯å¦æœ‰å­˜æ´»æ—¶é—´
+		public float lifeTimeDuration = 5f;    // å­˜æ´»æ—¶é—´ï¼ˆè¶…è¿‡åè‡ªåŠ¨æ¶ˆå¤±ï¼‰
 
-    [Header("Physics Settings")] // ÎïÀíÏà¹ØÉèÖÃ
-    public bool usePhysics;                // ÊÇ·ñÆôÓÃÎïÀíµ¯ÌøĞ§¹û
-    public float minForceToStopPhysics = 3f; // Ğ¡ÓÚ´ËËÙ¶ÈÊ±Í£Ö¹ÎïÀíĞ§¹û
-    public float collisionRadius = 0.5f;   // Åö×²¼ì²âµÄÇòÌå°ë¾¶
-    public float gravity = 15f;            // ÖØÁ¦¼ÓËÙ¶È
-    public float bounciness = 0.98f;       // µ¯ĞÔÏµÊı
-    public float maxBounceYVelocity = 10f; // ´¹Ö±·½Ïò×î´ó·´µ¯ËÙ¶È
-    public bool randomizeInitialDirection = true; // ÊÇ·ñËæ»ú³õÊ¼·¢Éä·½Ïò
-    public Vector3 initialVelocity = new Vector3(0, 12, 0); // ³õÊ¼ËÙ¶È
-    public AudioClip collisionClip;        // Åö×²Ê±µÄÒôĞ§
+		[Header("Physics Settings")] // ç‰©ç†ç›¸å…³è®¾ç½®
+		public bool usePhysics;                // æ˜¯å¦å¯ç”¨ç‰©ç†å¼¹è·³æ•ˆæœ
+		public float minForceToStopPhysics = 3f; // å°äºæ­¤é€Ÿåº¦æ—¶åœæ­¢ç‰©ç†æ•ˆæœ
+		public float collisionRadius = 0.5f;   // ç¢°æ’æ£€æµ‹çš„çƒä½“åŠå¾„
+		public float gravity = 15f;            // é‡åŠ›åŠ é€Ÿåº¦
+		public float bounciness = 0.98f;       // å¼¹æ€§ç³»æ•°
+		public float maxBounceYVelocity = 10f; // å‚ç›´æ–¹å‘æœ€å¤§åå¼¹é€Ÿåº¦
+		public bool randomizeInitialDirection = true; // æ˜¯å¦éšæœºåˆå§‹å‘å°„æ–¹å‘
+		public Vector3 initialVelocity = new Vector3(0, 12, 0); // åˆå§‹é€Ÿåº¦
+		public AudioClip collisionClip;        // ç¢°æ’æ—¶çš„éŸ³æ•ˆ
 
+		[Space(15)]
 
-    [Space(15)]
+		/// <summary>
+		/// å½“ç‰©å“è¢«æ”¶é›†æ—¶è°ƒç”¨çš„äº‹ä»¶ã€‚
+		/// </summary>
+		public PlayerEvent onCollect;
 
-    // ÄÚ²¿×´Ì¬
-    protected bool m_vanished;             // ÊÇ·ñÒÑ¾­ÏûÊ§
-    protected bool m_ghosting = true;      // ÊÇ·ñ´¦ÓÚÓÄÁéÊ±¼ä£¨²»¿ÉÊÕ¼¯£©
-    protected float m_elapsedLifeTime;     // ÒÑ¾­¹ıµÄÉúÃüÖÜÆÚÊ±¼ä
-    protected float m_elapsedGhostingTime; // ÒÑ¾­¹ıµÄÓÄÁéÊ±¼ä
-    protected Vector3 m_velocity;          // µ±Ç°ËÙ¶È£¨ÎïÀíÄ£Ê½ÏÂÊ¹ÓÃ£©
+		// ç»„ä»¶ç¼“å­˜
+		protected Collider m_collider;
+		protected AudioSource m_audio;
 
-    // ³£Á¿£¨ÓÃÓÚËæ»úĞı×ª³õÊ¼·½Ïò£©
-    protected const int k_verticalMinRotation = 0;
-    protected const int k_verticalMaxRotation = 30;
-    protected const int k_horizontalMinRotation = 0;
-    protected const int k_horizontalMaxRotation = 360;
+		// å†…éƒ¨çŠ¶æ€
+		protected bool m_vanished;             // æ˜¯å¦å·²ç»æ¶ˆå¤±
+		protected bool m_ghosting = true;      // æ˜¯å¦å¤„äºå¹½çµæ—¶é—´ï¼ˆä¸å¯æ”¶é›†ï¼‰
+		protected float m_elapsedLifeTime;     // å·²ç»è¿‡çš„ç”Ÿå‘½å‘¨æœŸæ—¶é—´
+		protected float m_elapsedGhostingTime; // å·²ç»è¿‡çš„å¹½çµæ—¶é—´
+		protected Vector3 m_velocity;          // å½“å‰é€Ÿåº¦ï¼ˆç‰©ç†æ¨¡å¼ä¸‹ä½¿ç”¨ï¼‰
 
-    /// <summary>
-    /// µ±ÎïÆ·±»ÊÕ¼¯Ê±µ÷ÓÃµÄÊÂ¼ş¡£
-    /// </summary>
-    public PlayerEvent onCollect;
+		// å¸¸é‡ï¼ˆç”¨äºéšæœºæ—‹è½¬åˆå§‹æ–¹å‘ï¼‰
+		protected const int k_verticalMinRotation = 0;
+		protected const int k_verticalMaxRotation = 30;
+		protected const int k_horizontalMinRotation = 0;
+		protected const int k_horizontalMaxRotation = 360;
 
-    // ×é¼ş»º´æ
-    protected Collider m_collider;
-    protected AudioSource m_audio;
+		// åˆå§‹åŒ–éŸ³é¢‘ç»„ä»¶
+		protected virtual void InitializeAudio()
+		{
+			if (!TryGetComponent(out m_audio))
+			{
+				m_audio = gameObject.AddComponent<AudioSource>();
+			}
+		}
 
-    // ³õÊ¼»¯ÒôÆµ×é¼ş
-    protected virtual void InitializeAudio()
-    {
-        if (!TryGetComponent(out m_audio))
-        {
-            m_audio = gameObject.AddComponent<AudioSource>();
-        }
-    }
+		// åˆå§‹åŒ–ç¢°æ’ä½“ï¼ˆè®¾ç½®ä¸ºè§¦å‘å™¨ï¼‰
+		protected virtual void InitializeCollider()
+		{
+			m_collider = GetComponent<Collider>();
+			m_collider.isTrigger = true;
+		}
 
-    // ³õÊ¼»¯Åö×²Ìå£¨ÉèÖÃÎª´¥·¢Æ÷£©
-    protected virtual void InitializeCollider()
-    {
-        m_collider = GetComponent<Collider>();
-        m_collider.isTrigger = true;
-    }
+		// åˆå§‹åŒ–ä½ç½®ä¸æ—‹è½¬ï¼ˆç‰©ä½“ç‹¬ç«‹å­˜åœ¨ï¼Œæ—‹è½¬å½’é›¶ï¼‰
+		protected virtual void InitializeTransform()
+		{
+			transform.parent = null;
+			transform.rotation = Quaternion.identity;
+		}
 
-    // ³õÊ¼»¯Î»ÖÃÓëĞı×ª£¨ÎïÌå¶ÀÁ¢´æÔÚ£¬Ğı×ª¹éÁã£©
-    protected virtual void InitializeTransform()
-    {
-        transform.parent = null;
-        transform.rotation = Quaternion.identity;
-    }
+		// åˆå§‹åŒ–æ˜¾ç¤ºçŠ¶æ€
+		protected virtual void InitializeDisplay()
+		{
+			display.SetActive(!hidden);
+		}
 
-    // ³õÊ¼»¯ÏÔÊ¾×´Ì¬
-    protected virtual void InitializeDisplay()
-    {
-        display?.SetActive(!hidden);
-    }
+		// åˆå§‹åŒ–é€Ÿåº¦ï¼ˆå¯éšæœºæ–¹å‘ï¼‰
+		protected virtual void InitializeVelocity()
+		{
+			var direction = initialVelocity.normalized;
+			var force = initialVelocity.magnitude;
 
-    // ³õÊ¼»¯ËÙ¶È£¨¿ÉËæ»ú·½Ïò£©
-    protected virtual void InitializeVelocity()
-    {
-        var direction = initialVelocity.normalized;
-        var force = initialVelocity.magnitude;
+			if (randomizeInitialDirection)
+			{
+				var randomZ = Random.Range(k_verticalMinRotation, k_verticalMaxRotation);
+				var randomY = Random.Range(k_horizontalMinRotation, k_horizontalMaxRotation);
+				direction = Quaternion.Euler(0, 0, randomZ) * direction;
+				direction = Quaternion.Euler(0, randomY, 0) * direction;
+			}
 
-        if (randomizeInitialDirection)
-        {
-            var randomZ = Random.Range(k_verticalMinRotation, k_verticalMaxRotation);
-            var randomY = Random.Range(k_horizontalMinRotation, k_horizontalMaxRotation);
-            direction = Quaternion.Euler(0, 0, randomZ) * direction;
-            direction = Quaternion.Euler(0, randomY, 0) * direction;
-        }
+			m_velocity = direction * force;
+		}
 
-        m_velocity = direction * force;
-    }
+		/// <summary>
+		/// æ”¶é›†åç¨‹ï¼šæ’­æ”¾éŸ³æ•ˆï¼Œè§¦å‘äº‹ä»¶ï¼Œå¯å¤šæ¬¡æ‰§è¡Œã€‚
+		/// </summary>
+		protected virtual IEnumerator CollectRoutine(Player player)
+		{
+			for (int i = 0; i < times; i++)
+			{
+				m_audio.Stop();
+				m_audio.PlayOneShot(clip);
+				onCollect.Invoke(player);
+				yield return new WaitForSeconds(0.1f);
+			}
+		}
 
-    /// <summary>
-    /// ÏûÊ§£ºÒş²ØÏÔÊ¾ÎïÌåÓëÅö×²Ìå¡£
-    /// </summary>
-    public virtual void Vanish()
-    {
-        if (!m_vanished)
-        {
-            m_vanished = true;
-            m_elapsedLifeTime = 0;
-            display.SetActive(false);
-            m_collider.enabled = false;
-        }
-    }
+		/// <summary>
+		/// å¿«é€Ÿå±•ç¤ºåç¨‹ï¼šéšè—çŠ¶æ€ä¸‹å±•ç¤º â†’ å‡èµ· â†’ ç­‰å¾… â†’ å›åˆ°åŸä½ â†’ æ¶ˆå¤±
+		/// </summary>
+		protected virtual IEnumerator QuickShowRoutine()
+		{
+			var elapsedTime = 0f;
+			var initialPosition = transform.position;
+			var targetPosition = initialPosition + Vector3.up * quickShowHeight;
 
-    /// <summary>
-    /// ¿ìËÙÕ¹Ê¾Ğ­³Ì£ºÒş²Ø×´Ì¬ÏÂÕ¹Ê¾ ¡ú ÉıÆğ ¡ú µÈ´ı ¡ú »Øµ½Ô­Î» ¡ú ÏûÊ§
-    /// </summary>
-    protected virtual IEnumerator QuickShowRoutine()
-    {
-        var elapsedTime = 0f;
-        var initialPosition = transform.position;
-        var targetPosition = initialPosition + Vector3.up * quickShowHeight;
+			display.SetActive(true);
+			m_collider.enabled = false;
 
-        display.SetActive(true);
-        m_collider.enabled = false;
+			while (elapsedTime < quickShowDuration)
+			{
+				var t = elapsedTime / quickShowDuration;
+				transform.position = Vector3.Lerp(initialPosition, targetPosition, t);
+				elapsedTime += Time.deltaTime;
+				yield return null;
+			}
 
-        while (elapsedTime < quickShowDuration)
-        {
-            var t = elapsedTime / quickShowDuration;
-            transform.position = Vector3.Lerp(initialPosition, targetPosition, t);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+			transform.position = targetPosition;
+			yield return new WaitForSeconds(hideDuration);
+			transform.position = initialPosition;
+			Vanish();
+		}
 
-        transform.position = targetPosition;
-        yield return new WaitForSeconds(hideDuration);
-        transform.position = initialPosition;
-        Vanish();
-    }
+		/// <summary>
+		/// è§¦å‘æ”¶é›†é€»è¾‘ã€‚
+		/// </summary>
+		public virtual void Collect(Player player)
+		{
+			if (!m_vanished && !m_ghosting)
+			{
+				if (!hidden)
+				{
+					Vanish();
 
-    /// <summary>
-    /// ÊÕ¼¯Ğ­³Ì£º²¥·ÅÒôĞ§£¬´¥·¢ÊÂ¼ş£¬¿É¶à´ÎÖ´ĞĞ¡£
-    /// </summary>
-    protected virtual IEnumerator CollectRoutine(Player player)
-    {
-        for (int i = 0; i < times; i++)
-        {
-            m_audio.Stop();
-            m_audio.PlayOneShot(clip);
-            onCollect.Invoke(player);//ÊÂ¼ş²ÎÊı¶¨Î»Íæ¼Ò
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
+					if (particle != null)
+					{
+						particle.Play();
+					}
+				}
+				else
+				{
+					StartCoroutine(QuickShowRoutine());
+				}
 
-    /// <summary>
-    /// ´¥·¢ÊÕ¼¯Âß¼­¡£
-    /// </summary>
-    public virtual void Collect(Player player)
-    {
-        if (!m_vanished && !m_ghosting)
-        {
-            if (!hidden)
-            {
-                Vanish();
+				StartCoroutine(CollectRoutine(player));
+			}
+		}
 
-                if (particle != null)
-                {
-                    particle.Play();
-                }
-            }
-            else
-            {
-                StartCoroutine(QuickShowRoutine());
-            }
+		/// <summary>
+		/// æ¶ˆå¤±ï¼šéšè—æ˜¾ç¤ºç‰©ä½“ä¸ç¢°æ’ä½“ã€‚
+		/// </summary>
+		public virtual void Vanish()
+		{
+			if (!m_vanished)
+			{
+				m_vanished = true;
+				m_elapsedLifeTime = 0;
+				display.SetActive(false);
+				m_collider.enabled = false;
+			}
+		}
 
-            StartCoroutine(CollectRoutine(player));
-        }
-    }
+		// å¹½çµæ—¶é—´å¤„ç†
+		protected virtual void HandleGhosting()
+		{
+			if (m_ghosting)
+			{
+				m_elapsedGhostingTime += Time.deltaTime;
 
+				if (m_elapsedGhostingTime >= ghostingDuration)
+				{
+					m_elapsedGhostingTime = 0;
+					m_ghosting = false;
+				}
+			}
+		}
 
-    // ´¥·¢Æ÷¼ì²â£ºÈç¹ûÉèÖÃÁË collectOnContact£¬Íæ¼ÒÅöµ½¾ÍÊÕ¼¯
-    protected virtual void OnTriggerStay(Collider other)
-    {
-        if (collectOnContact && other.CompareTag(GameTags.Player))
-        {
-            if (other.TryGetComponent<Player>(out var player))
-            {
-                Collect(player);
-            }
-        }
-    }
+		// ç”Ÿå‘½å‘¨æœŸå¤„ç†
+		protected virtual void HandleLifeTime()
+		{
+			if (hasLifeTime)
+			{
+				m_elapsedLifeTime += Time.deltaTime;
 
-    // ÓÄÁéÊ±¼ä´¦Àí
-    protected virtual void HandleGhosting()
-    {
-        if (m_ghosting)
-        {
-            m_elapsedGhostingTime += Time.deltaTime;
+				if (m_elapsedLifeTime >= lifeTimeDuration)
+				{
+					Vanish();
+				}
+			}
+		}
 
-            if (m_elapsedGhostingTime >= ghostingDuration)
-            {
-                m_elapsedGhostingTime = 0;
-                m_ghosting = false;
-            }
-        }
-    }
+		// ç‰©ç†ç§»åŠ¨å¤„ç†ï¼ˆé‡åŠ›ï¼‰
+		protected virtual void HandleMovement()
+		{
+			m_velocity.y -= gravity * Time.deltaTime;
+		}
 
-    // ÉúÃüÖÜÆÚ´¦Àí
-    protected virtual void HandleLifeTime()
-    {
-        if (hasLifeTime)
-        {
-            m_elapsedLifeTime += Time.deltaTime;
+		// ç¢°æ’æ£€æµ‹ä¸åå¼¹
+		protected virtual void HandleSweep()
+		{
+			var direction = m_velocity.normalized;
+			var magnitude = m_velocity.magnitude;
+			var distance = magnitude * Time.deltaTime;
 
-            if (m_elapsedLifeTime >= lifeTimeDuration)
-            {
-                Vanish();
-            }
-        }
-    }
+			if (Physics.SphereCast(transform.position, collisionRadius, direction,
+				out var hit, distance, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+			{
+				if (!hit.collider.CompareTag(GameTags.Player))
+				{
+					// åå¼¹æ–¹å‘ = å…¥å°„æ–¹å‘åœ¨æ³•çº¿ä¸Šçš„åå°„
+					var bounceDirection = Vector3.Reflect(direction, hit.normal);
+					m_velocity = bounceDirection * magnitude * bounciness;
+					m_velocity.y = Mathf.Min(m_velocity.y, maxBounceYVelocity);
+					m_audio.Stop();
+					m_audio.PlayOneShot(collisionClip);
 
-    // ÎïÀíÒÆ¶¯´¦Àí£¨ÖØÁ¦£©
-    protected virtual void HandleMovement()
-    {
-        m_velocity.y -= gravity * Time.deltaTime;
-    }
+					// é€Ÿåº¦è¿‡å°åˆ™åœæ­¢ç‰©ç†æ¨¡å¼
+					if (m_velocity.y <= minForceToStopPhysics)
+						usePhysics = false;
+				}
+			}
 
-    // Åö×²¼ì²âÓë·´µ¯
-    protected virtual void HandleSweep()
-    {
-        var direction = m_velocity.normalized;
-        var magnitude = m_velocity.magnitude;
-        var distance = magnitude * Time.deltaTime;
-        if (Physics.SphereCast(transform.position, collisionRadius, direction,
-                out var hit, distance, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
-        {
-            if (!hit.collider.CompareTag(GameTags.Player))
-            {
-                // ·´µ¯·½Ïò = ÈëÉä·½ÏòÔÚ·¨ÏßÉÏµÄ·´Éä
-                var bounceDirection = Vector3.Reflect(direction, hit.normal);
-                m_velocity = bounceDirection * magnitude * bounciness;
-                m_velocity.y = Mathf.Min(m_velocity.y, maxBounceYVelocity);
-                m_audio.Stop();
-                m_audio.PlayOneShot(collisionClip);
+			transform.position += m_velocity * Time.deltaTime;
+		}
 
-                // ËÙ¶È¹ıĞ¡ÔòÍ£Ö¹ÎïÀíÄ£Ê½
-                if (m_velocity.y <= minForceToStopPhysics)
-                    usePhysics = false;
-            }
-        }
+		// Unity ç”Ÿå‘½å‘¨æœŸå‡½æ•°
+		protected virtual void Awake()
+		{
+			InitializeAudio();
+			InitializeCollider();
+			InitializeTransform();
+			InitializeDisplay();
+			InitializeVelocity();
+		}
 
-        transform.position += m_velocity * Time.deltaTime;
-    }
+		protected virtual void Update()
+		{
+			if (!m_vanished)
+			{
+				HandleGhosting();
+				HandleLifeTime();
 
-    protected virtual void Update()
-    {
-        if (!m_vanished)
-        {
-            HandleGhosting();
-            HandleLifeTime();
+				if (usePhysics)
+				{
+					HandleMovement();
+					HandleSweep();
+				}
+			}
+		}
 
-            if (usePhysics)
-            {
-                HandleMovement();
-                HandleSweep();
-            }
-        }
-    }
+		// è§¦å‘å™¨æ£€æµ‹ï¼šå¦‚æœè®¾ç½®äº† collectOnContactï¼Œç©å®¶ç¢°åˆ°å°±æ”¶é›†
+		protected virtual void OnTriggerStay(Collider other)
+		{
+			if (collectOnContact && other.CompareTag(GameTags.Player))
+			{
+				if (other.TryGetComponent<Player>(out var player))
+				{
+					Collect(player);
+				}
+			}
+		}
 
-
-    // Unity ÉúÃüÖÜÆÚº¯Êı
-    protected virtual void Awake()
-    {
-        InitializeAudio();
-        InitializeCollider();
-        InitializeTransform();
-        InitializeDisplay();
-        InitializeVelocity();
-    }
+		// ç¼–è¾‘å™¨è°ƒè¯•ç”¨ï¼šç»˜åˆ¶ç‰©ç†æ£€æµ‹çƒä½“
+		protected virtual void OnDrawGizmos()
+		{
+			if (usePhysics)
+			{
+				Gizmos.color = Color.green;
+				Gizmos.DrawWireSphere(transform.position, collisionRadius);
+			}
+		}
+	}
 }

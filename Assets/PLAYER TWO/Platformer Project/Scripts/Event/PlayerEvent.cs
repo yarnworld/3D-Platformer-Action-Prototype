@@ -1,5 +1,8 @@
-using System;
+﻿using System;
 using UnityEngine.Events;
 
-[Serializable]
-public class PlayerEvent : UnityEvent<Player> { }
+namespace PLAYERTWO.PlatformerProject
+{
+	[Serializable]
+	public class PlayerEvent : UnityEvent<Player> {}
+}

@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Tools\Editor\ClassTypeNameDrawer.cs" />
+    <Compile Include="Assets\PLAYER TWO\Platformer Project\Scripts\Tools\Editor\UIAnimatorInspector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

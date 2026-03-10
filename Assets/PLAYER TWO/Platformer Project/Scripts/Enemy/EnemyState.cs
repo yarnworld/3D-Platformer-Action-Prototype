@@ -1,1 +1,4 @@
-public abstract class EnemyState : EntityState<Enemy> { }
+namespace PLAYERTWO.PlatformerProject
+{
+	public abstract class EnemyState : EntityState<Enemy> { }
+}

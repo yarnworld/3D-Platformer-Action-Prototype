@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2924e3087121cc04881d0a0e1a2bc7a1, type: 3}
+  m_Script: {fileID: 11500000, guid: d2204d82d31aa9145891e32d50e80eb9, type: 3}
   m_Name: RegularEnemyStats
   m_EditorClassIdentifier: 
   gravity: 35
@@ -17,10 +17,18 @@ MonoBehaviour:
   rotationSpeed: 970
   deceleration: 28
   friction: 16
+  turningDrag: 28
+  spotRange: 5
+  viewRange: 8
+  canAttackOnContact: 1
   contactPushback: 1
+  contactOffset: 0.15
   contactDamage: 1
   contactPushBackForce: 18
-  spotRage: 6
-  viewRage: 8
+  contactSteppingTolerance: 0.1
   followAcceleration: 10
-  followTopSpeed: 2.5
+  followTopSpeed: 4
+  faceWaypoint: 1
+  waypointMinDistance: 0.5
+  waypointAcceleration: 10
+  waypointTopSpeed: 2
